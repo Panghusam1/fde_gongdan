@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ohf-answerability-holdout-v2",
+  "purpose": "在前五候选加独立证据判断策略锁定后，用首次运行前冻结的新问题验证能否推广；题目由项目组基于六份候选资料编写，不代表真实工厂查询分布",
+  "dataset_role": "unseen_holdout_before_first_run",
+  "product_family_code": "ATV320",
+  "frozen_before_first_model_run": true,
+  "changes_knowledge_approval_status": false,
+  "strategy": {
+    "strategy_id": "e5-top5-qwen-answerability-v1",
+    "candidate_limit": 5,
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v1",
+    "locked_before_first_run": true
+  },
+  "acceptance_targets": {
+    "answerable_correct_accept_rate_minimum": 0.9,
+    "unanswerable_abstain_accuracy_minimum": 1,
+    "accepted_precision_minimum": 0.9,
+    "judge_error_count_maximum": 0
+  },
+  "cases": [
+    {
+      "case_id": "N01",
+      "query": "操作员只报了面板上的OHF，工单里的故障含义字段应填写什么？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "expected_pdf_pages": [72]
+    },
+    {
+      "case_id": "N02",
+      "query": "报警记录中的OHF在官方错误代码表里对应什么中文名称？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "expected_pdf_pages": [72]
+    },
+    {
+      "case_id": "N03",
+      "query": "如果现场看到OHF代码，资料把它归为什么设备状态？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "expected_pdf_pages": [72]
+    },
+    {
+      "case_id": "N04",
+      "query": "驱动器热状态到OHF门槛时，页面给出的百分比是多少？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "expected_pdf_pages": [50]
+    },
+    {
+      "case_id": "N05",
+      "query": "额定热状态以100%计，官方资料标注的过载阈值是多少？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "expected_pdf_pages": [50]
+    },
+    {
+      "case_id": "N06",
+      "query": "要核对OHF热阈值，请给出手册中的百分数。",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "expected_pdf_pages": [50]
+    },
+    {
+      "case_id": "N07",
+      "query": "OHF原因已经排除，分配的输入位需要变成什么值才能手动清除？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "N08",
+      "query": "手册的可手动清除错误清单里是否包含OHF？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "N09",
+      "query": "什么前提满足后，才能通过分配输入人工清掉OHF？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "N10",
+      "query": "产品重启功能会同时执行哪两个动作？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "N11",
+      "query": "为什么启用重启以前必须确认不会造成不安全情况？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "N12",
+      "query": "没有按产品重启警告操作，手册列出的后果是什么？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "N13",
+      "query": "停掉错误检测以后，什么机制必须代替被禁用的监控？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "expected_pdf_pages": [329]
+    },
+    {
+      "case_id": "N14",
+      "query": "启用替代监视后，系统还必须完成哪两类验证工作？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "expected_pdf_pages": [329]
+    },
+    {
+      "case_id": "N15",
+      "query": "使用错误检测禁用参数以前，手册要求先完成什么评估？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "expected_pdf_pages": [329]
+    },
+    {
+      "case_id": "N16",
+      "query": "断电以后至少等待多久才能测量直流母线？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "expected_pdf_pages": [385]
+    },
+    {
+      "case_id": "N17",
+      "query": "直流母线电压低于什么数值才满足手册的放电检查条件？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "expected_pdf_pages": [385]
+    },
+    {
+      "case_id": "N18",
+      "query": "母线电容没有完全放电时，手册要求联系谁并禁止做什么？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "expected_pdf_pages": [385]
+    },
+    {
+      "case_id": "N19",
+      "query": "发生OHF以后需要更换哪种规格的冷却风扇？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六份资料没有冷却风扇规格"
+    },
+    {
+      "case_id": "N20",
+      "query": "OHF报警历史最多能够保存多少条？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六份资料没有报警历史容量"
+    },
+    {
+      "case_id": "N21",
+      "query": "环境温度超过多少摄氏度以后需要降额运行？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前热状态片段没有环境温度降额条件"
+    },
+    {
+      "case_id": "N22",
+      "query": "变频器散热器应该间隔多久清洁一次？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六份资料没有维护周期"
+    },
+    {
+      "case_id": "N23",
+      "query": "设备过热时还允许继续运行多少分钟？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六份资料没有过热后的允许运行时间"
+    },
+    {
+      "case_id": "N24",
+      "query": "OHF故障是否属于厂商保修范围并承担风扇费用？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六份资料没有保修范围和费用政策"
+    },
+    {
+      "case_id": "N25",
+      "query": "故障复位输入应该接到变频器的哪个物理端子？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前复位片段只说明输入位变化，没有端子分配"
+    },
+    {
+      "case_id": "N26",
+      "query": "怎样在操作面板菜单里把端子分配成故障复位输入？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六份资料没有菜单配置步骤"
+    },
+    {
+      "case_id": "N27",
+      "query": "产品重启功能对应的参数编号是什么？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前重启警告没有参数编号"
+    },
+    {
+      "case_id": "N28",
+      "query": "执行一次产品重启大约需要多少秒？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前重启警告没有执行时长"
+    },
+    {
+      "case_id": "N29",
+      "query": "关闭错误检测功能时应该把参数设成哪个具体值？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前危险警告没有提供参数设定值"
+    },
+    {
+      "case_id": "N30",
+      "query": "风险评估时具体适用哪些国家标准编号？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前危险警告只要求遵守适用标准，没有列出编号"
+    },
+    {
+      "case_id": "N31",
+      "query": "替代监控应该采购哪个品牌型号的传感器？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前危险警告没有传感器选型信息"
+    },
+    {
+      "case_id": "N32",
+      "query": "测量直流母线应使用什么精度等级的万用表？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前放电步骤没有仪表精度要求"
+    },
+    {
+      "case_id": "N33",
+      "query": "电压低于42伏以后可以立即拆下哪些端子？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前放电步骤没有授权拆端子"
+    },
+    {
+      "case_id": "N34",
+      "query": "外部控制电源的额定电压是多少？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前放电步骤提到外部控制电源但没有额定电压"
+    },
+    {
+      "case_id": "N35",
+      "query": "锁定隔离开关时应使用哪一种挂牌锁具？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前放电步骤没有锁具规格"
+    },
+    {
+      "case_id": "N36",
+      "query": "现场找不到PA/+端子时应该测量哪个替代点？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前放电步骤没有替代测量点"
+    }
+  ]
+}

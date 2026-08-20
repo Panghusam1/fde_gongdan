@@ -1,0 +1,513 @@
+{
+  "schema_version": 1,
+  "registry_id": "model-test-registry-v1",
+  "purpose": "让默认跳过的模型测试仍然具备可追踪原因、显式命令、最近真实状态和证据，禁止把跳过误报成通过",
+  "status_definitions": {
+    "passed": "真实依赖已经运行并达到预先定义的断言或效果门槛",
+    "failed": "真实依赖已经运行，但功能或效果门槛没有达到",
+    "blocked": "请求在进入模型计算前被凭据、权限或外部条件阻断，不能评价模型效果"
+  },
+  "tests": [
+    {
+      "rule_code": "R133",
+      "test_file": "tests/e5-embedder.integration.test.ts",
+      "enable_variable": "RUN_E5_INTEGRATION",
+      "dependency_kind": "local_model",
+      "default_skip_reason": "默认回归不强制每台机器都已下载并缓存固定版本E5模型",
+      "explicit_command": "$env:RUN_E5_INTEGRATION='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/e5-embedder.integration.test.ts",
+      "accuracy_role": "验证向量维度、归一化和相关文本相似度方向，不代表业务检索准确率",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "384维、归一化、相关文本相似度高于无关文本",
+        "evidence_paths": [
+          "docs/evaluations/automated-regression-2026-08-19.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R182",
+      "test_file": "tests/qwen-coordinator.integration.test.ts",
+      "enable_variable": "RUN_QWEN_INTEGRATION",
+      "dependency_kind": "paid_remote_model",
+      "default_skip_reason": "每次默认回归调用外部模型会产生费用，并受网络和服务状态影响",
+      "explicit_command": "$env:RUN_QWEN_INTEGRATION='1'; node --test tests/qwen-coordinator.integration.test.ts",
+      "accuracy_role": "验证真实协调模型能选择官方资料检索动作并输出合法查询词",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "真实qwen3.7-plus选择检索动作并通过参数校验",
+        "evidence_paths": [
+          "docs/evaluations/automated-regression-2026-08-19.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R183",
+      "test_file": "tests/qwen-coordinator.integration.test.ts",
+      "enable_variable": "RUN_QWEN_INTEGRATION",
+      "dependency_kind": "paid_remote_model",
+      "default_skip_reason": "每次默认回归调用外部模型会产生费用，并受网络和服务状态影响",
+      "explicit_command": "$env:RUN_QWEN_INTEGRATION='1'; node --test tests/qwen-coordinator.integration.test.ts",
+      "accuracy_role": "验证真实协调模型只根据给定证据生成字段完整的低风险方案",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "真实qwen3.7-plus生成字段完整方案并通过结构校验",
+        "evidence_paths": [
+          "docs/evaluations/automated-regression-2026-08-19.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R187",
+      "test_file": "tests/qwen-agent-trajectory.integration.test.ts",
+      "enable_variable": "RUN_QWEN_TRAJECTORY_EVAL",
+      "dependency_kind": "paid_remote_model",
+      "default_skip_reason": "一次评测包含40轮外部模型调用，耗时和费用不适合每次本地回归",
+      "explicit_command": "$env:RUN_QWEN_TRAJECTORY_EVAL='1'; node --test tests/qwen-agent-trajectory.integration.test.ts",
+      "accuracy_role": "验证20个业务过程中的结构输出、动作、参数和整条轨迹",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "结构输出100%，动作与参数92.5%，整条轨迹85%，17/20完整通过",
+        "evidence_paths": [
+          "reports/qwen-agent-trajectory-evaluation-v1.json",
+          "docs/evaluations/qwen-agent-trajectories-v1-2026-08-19.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R196",
+      "test_file": "tests/qwen-reranker.integration.test.ts",
+      "enable_variable": "RUN_QWEN_RERANK_EVAL",
+      "dependency_kind": "missing_backend_credential",
+      "default_skip_reason": "排序接口需要独立业务空间后端密钥；现有Token Plan密钥不具备该权限",
+      "explicit_command": "$env:RUN_QWEN_RERANK_EVAL='1'; node --test tests/qwen-reranker.integration.test.ts",
+      "accuracy_role": "验证二次排序能否把E5前三候选的正向首位命中提高到至少90%",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "blocked",
+        "summary": "HTTP 401 invalid_api_key，请求未进入模型计算，不能评价排序准确率",
+        "evidence_paths": [
+          "reports/qwen-reranker-evaluation-v1.json",
+          "docs/interview/stage-11-forty-case-retrieval-and-reranking.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R203",
+      "test_file": "tests/e5-answerability-holdout.integration.test.ts",
+      "enable_variable": "RUN_E5_ANSWERABILITY_EVAL",
+      "dependency_kind": "local_model_capability_gate",
+      "default_skip_reason": "默认回归只验证评测器；该项会加载真实E5，并且候选阈值当前按设计会返回失败状态",
+      "explicit_command": "$env:RUN_E5_ANSWERABILITY_EVAL='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/e5-answerability-holdout.integration.test.ts",
+      "accuracy_role": "在预冻结24题上验证0.86阈值的正确接收、无答案拒答和接收准确率",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "failed",
+        "summary": "正确接收91.7%通过；无答案拒答83.3%与接收准确率84.6%未达标",
+        "evidence_paths": [
+          "reports/ohf-answerability-holdout-v1-prerun.json",
+          "reports/ohf-answerability-holdout-v1-result.json",
+          "docs/interview/stage-13-answerability-holdout.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R215",
+      "test_file": "tests/qwen-answerability-regression.integration.test.ts",
+      "enable_variable": "RUN_QWEN_ANSWERABILITY_REGRESSION",
+      "dependency_kind": "paid_remote_model",
+      "default_skip_reason": "一次回归包含24次外部模型调用，耗时和费用不适合每次本地回归",
+      "explicit_command": "$env:RUN_QWEN_ANSWERABILITY_REGRESSION='1'; node --test tests/qwen-answerability-regression.integration.test.ts",
+      "accuracy_role": "在已经暴露过结果的24题上验证前五候选加证据判断器是否修复已知拒答错误，不作为新未见数据成绩",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "有答案正确放行、无答案拒答、放行准确率和总体决策均为100%，模型输出错误0次",
+        "evidence_paths": [
+          "reports/qwen-answerability-regression-v1.json",
+          "docs/interview/stage-15-answerability-judge.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R221",
+      "test_file": "tests/qwen-answerability-holdout-v2.integration.test.ts",
+      "enable_variable": "RUN_QWEN_ANSWERABILITY_HOLDOUT_V2",
+      "dependency_kind": "local_and_paid_model_capability_gate",
+      "default_skip_reason": "一次能力门需要加载固定E5并进行36次外部千问调用，耗时和费用不适合每次本地回归",
+      "explicit_command": "$env:RUN_QWEN_ANSWERABILITY_HOLDOUT_V2='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/qwen-answerability-holdout-v2.integration.test.ts",
+      "accuracy_role": "在首次运行前封存的36道项目内未见题上验证E5前五候选加证据判断器的推广效果",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "首次运行：有答案正确放行94.4%，无答案拒答100%，放行准确率100%，总体97.2%，模型输出错误0次",
+        "evidence_paths": [
+          "reports/ohf-answerability-holdout-v2-prerun.json",
+          "reports/qwen-answerability-holdout-v2-first-run.json",
+          "docs/interview/stage-15-answerability-judge.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R228",
+      "test_file": "tests/work-order-evidence-validation.test.ts",
+      "enable_variable": "RUN_QWEN_WORK_ORDER_EVIDENCE_CHAIN",
+      "dependency_kind": "paid_remote_model",
+      "default_skip_reason": "该项调用真实千问验证工单数据库主链路，默认回归不应隐式产生费用或依赖外部服务",
+      "explicit_command": "$env:RUN_QWEN_WORK_ORDER_EVIDENCE_CHAIN='1'; node --test --test-name-pattern='R228' tests/work-order-evidence-validation.test.ts",
+      "accuracy_role": "验证真实证据判断器接入检索、风险和审计数据库后的单条主链路终态，不作为新的准确率评测",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "真实qwen3.7-plus选中正确低风险证据；证据判断、事件和风险判断各1条，人工接管和方案均为0",
+        "evidence_paths": [
+          "docs/evaluations/work-order-evidence-chain-2026-08-19.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R233",
+      "test_file": "tests/work-order-evidence-validation.test.ts",
+      "enable_variable": "RUN_QWEN_WORK_ORDER_EVIDENCE_HOLDOUT",
+      "dependency_kind": "paid_remote_model_capability_gate",
+      "default_skip_reason": "首次多分支验收包含3次外部模型调用和4套数据库，默认回归不能重复付费或改写首轮历史",
+      "explicit_command": "$env:RUN_QWEN_WORK_ORDER_EVIDENCE_HOLDOUT='1'; node --test --test-name-pattern='R233' tests/work-order-evidence-validation.test.ts",
+      "accuracy_role": "在首次运行前封存的4条项目内案例上同时验证证据细分类、风险结论、模型调用次数和数据库终态",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "failed",
+        "summary": "首轮3/4精确分类通过；WEC03把部分相关判为无答案。四条安全终态均正确，模型错误0次，但预先要求4/4，因此真实状态记为失败",
+        "evidence_paths": [
+          "reports/work-order-evidence-chain-holdout-v1-prerun.json",
+          "reports/work-order-evidence-chain-holdout-v1-first-run.json"
+        ]
+      }
+    },
+    {
+      "rule_code": "R236",
+      "test_file": "tests/work-order-evidence-validation.test.ts",
+      "enable_variable": "RUN_QWEN_WORK_ORDER_EVIDENCE_V2_REGRESSION",
+      "dependency_kind": "paid_remote_model_regression",
+      "default_skip_reason": "该修复回归包含3次外部模型调用和4套数据库，默认回归不应重复产生费用或覆盖已保存报告",
+      "explicit_command": "$env:RUN_QWEN_WORK_ORDER_EVIDENCE_V2_REGRESSION='1'; node --test --test-name-pattern='R236' tests/work-order-evidence-validation.test.ts",
+      "accuracy_role": "用已经暴露结果的4条题验证互斥分类边界是否修复WEC03且不破坏其他工单分支，不作为新未见数据成绩",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "answerability-v2完整回归4/4通过，模型错误0次；高危分支仍为0次模型调用，四类数据库终态均符合原门槛",
+        "evidence_paths": [
+          "reports/work-order-evidence-chain-v2-regression-plan.json",
+          "reports/work-order-evidence-chain-v2-regression.json"
+        ]
+      }
+    },
+    {
+      "rule_code": "R243",
+      "test_file": "tests/qwen-answerability-holdout-v3.integration.test.ts",
+      "enable_variable": "RUN_QWEN_ANSWERABILITY_HOLDOUT_V3",
+      "dependency_kind": "local_and_paid_model_capability_gate",
+      "default_skip_reason": "该首次未见测试需要加载固定E5并进行18次外部模型调用；历史首跑报告必须只写一次，默认回归不能重跑冒充新首跑",
+      "explicit_command": "$env:RUN_QWEN_ANSWERABILITY_HOLDOUT_V3='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/qwen-answerability-holdout-v3.integration.test.ts",
+      "accuracy_role": "在首次运行前封存的18道新三分类题上验证E5前五候选和第二版判断提示能否推广",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "failed",
+        "summary": "首次未见首跑11/18；直接回答5/6、部分相关0/6、完全不可回答6/6，高危误放行0，引用校验错误1，因此未达冻结门槛",
+        "evidence_paths": [
+          "reports/ohf-answerability-holdout-v3-prerun.json",
+          "reports/qwen-answerability-holdout-v3-first-run.json"
+        ]
+      }
+    },
+    {
+      "rule_code": "R247",
+      "test_file": "tests/qwen-answerability-v3-regression.integration.test.ts",
+      "enable_variable": "RUN_QWEN_ANSWERABILITY_V3_REGRESSION",
+      "dependency_kind": "paid_remote_model_regression",
+      "default_skip_reason": "18道题已暴露且该轮包含18次外部模型调用；默认回归不应重复付费或覆盖受控回归历史",
+      "explicit_command": "$env:RUN_QWEN_ANSWERABILITY_V3_REGRESSION='1'; node --test tests/qwen-answerability-v3-regression.integration.test.ts",
+      "accuracy_role": "固定首跑候选顺序，仅比较完整互斥提示能否修复分类冲突和连续引用问题",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "failed",
+        "summary": "受控回归15/18；直接回答6/6、部分相关4/6、完全不可回答5/6，高危误放行和模型错误均为0，但未达原门槛",
+        "evidence_paths": [
+          "reports/ohf-answerability-v3-regression-plan.json",
+          "reports/qwen-answerability-v3-regression.json"
+        ]
+      }
+    },
+    {
+      "rule_code": "R255",
+      "test_file": "tests/qwen-answerability-v5-regression.integration.test.ts",
+      "enable_variable": "RUN_QWEN_ANSWERABILITY_V5_REGRESSION",
+      "dependency_kind": "paid_remote_model_regression",
+      "default_skip_reason": "两阶段判断对相关题调用模型两次，完整回归耗时和费用更高；默认回归不得覆盖已保存结果",
+      "explicit_command": "$env:RUN_QWEN_ANSWERABILITY_V5_REGRESSION='1'; node --test tests/qwen-answerability-v5-regression.integration.test.ts",
+      "accuracy_role": "验证事实判断、程序裁决和证据摘录两阶段编排能否在原18题上达到类别与唯一候选联合门槛",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "failed",
+        "summary": "原冻结联合指标16/18，未达17/18；类别判断17/18，直接回答与完全不可回答均6/6，高危误放行和模型错误均为0。V307为预先记录的候选标签歧义，审定分析为17/18，但不改变原失败状态",
+        "evidence_paths": [
+          "reports/ohf-answerability-v5-regression-plan.json",
+          "reports/qwen-answerability-v5-regression.json",
+          "reports/qwen-answerability-v5-adjudicated-analysis.json"
+        ]
+      }
+    },
+    {
+      "rule_code": "R262",
+      "test_file": "tests/qwen-answerability-holdout-v4.integration.test.ts",
+      "enable_variable": "RUN_QWEN_ANSWERABILITY_HOLDOUT_V4",
+      "dependency_kind": "local_and_paid_model_capability_gate",
+      "default_skip_reason": "该首次未见能力门需要加载固定E5并执行第五版两阶段外部模型调用；历史首跑报告只允许创建一次，默认回归不能重跑冒充新首跑",
+      "explicit_command": "$env:RUN_QWEN_ANSWERABILITY_HOLDOUT_V4='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/qwen-answerability-holdout-v4.integration.test.ts",
+      "accuracy_role": "在首跑前封存的第三批18道新问题上分别验证三分类准确率与预声明多证据联合准确率",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "首次未见首跑类别17/18、预声明多证据联合17/18；直接回答5/6、部分相关6/6、完全不可回答6/6，高危误放行0、判断错误0，达到全部冻结门槛",
+        "evidence_paths": [
+          "reports/ohf-answerability-holdout-v4-prerun.json",
+          "reports/qwen-answerability-holdout-v4-first-run.json"
+        ]
+      }
+    },
+    {
+      "rule_code": "R270",
+      "test_file": "tests/work-order-end-to-end-holdout-v2.integration.test.ts",
+      "enable_variable": "RUN_QWEN_WORK_ORDER_END_TO_END_V2",
+      "dependency_kind": "local_and_paid_model_database_capability_gate",
+      "default_skip_reason": "该能力门加载固定E5并调用真实千问完成十二条独立数据库工单；首跑报告不可覆盖，默认回归不能重复付费或冒充新首跑",
+      "explicit_command": "$env:RUN_QWEN_WORK_ORDER_END_TO_END_V2='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/work-order-end-to-end-holdout-v2.integration.test.ts",
+      "accuracy_role": "在首跑前封存的十二条项目内未见工单上联合验证证据判断、固定工作流、安全门、两版方案和数据库终态",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "failed",
+        "summary": "首次真实运行精确5/12，未达11/12；五条安全案例5/5、高危误生成方案0、判断错误0。四条失败来自问题限定超出原文，三条失败来自协调模型填写数据库编号不稳定",
+        "evidence_paths": [
+          "reports/work-order-end-to-end-holdout-v2-prerun.json",
+          "reports/qwen-work-order-end-to-end-holdout-v2-first-run.json",
+          "docs/evaluations/work-order-end-to-end-holdout-v2-2026-08-19.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R277",
+      "test_file": "tests/work-order-end-to-end-regression-v3.integration.test.ts",
+      "enable_variable": "RUN_QWEN_WORK_ORDER_REGRESSION_V3",
+      "dependency_kind": "local_and_paid_model_exposed_regression",
+      "default_skip_reason": "该回归加载固定E5并调用真实千问完成三条已暴露数据库工单；报告只允许创建一次，默认回归不能重复付费或冒充未见首跑",
+      "explicit_command": "$env:RUN_QWEN_WORK_ORDER_REGRESSION_V3='1'; $env:HF_LOCAL_ONLY='1'; node --test --test-name-pattern='R277' tests/work-order-end-to-end-regression-v3.integration.test.ts",
+      "accuracy_role": "只验证E201、E202、E205三个已暴露的协调数据库编号故障是否被状态绑定修复，不作为新的未见数据成绩",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "真实E5、qwen3.7-plus与数据库回归3/3；判断错误0、工作流错误0、误生成高危方案0",
+        "evidence_paths": [
+          "reports/work-order-end-to-end-regression-v3-prerun.json",
+          "reports/qwen-work-order-end-to-end-regression-v3-first-run.json",
+          "reports/work-order-end-to-end-v2-label-adjudication.json",
+          "docs/interview/stage-21-state-bound-coordinator-regression.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R282",
+      "test_file": "tests/work-order-end-to-end-holdout-v3.integration.test.ts",
+      "enable_variable": "RUN_QWEN_WORK_ORDER_END_TO_END_V3",
+      "dependency_kind": "local_and_paid_model_database_capability_gate",
+      "default_skip_reason": "该能力门加载固定E5并调用真实千问完成十二条全新数据库工单；首跑报告不可覆盖，默认回归不能重复付费或冒充新首跑",
+      "explicit_command": "$env:RUN_QWEN_WORK_ORDER_END_TO_END_V3='1'; $env:HF_LOCAL_ONLY='1'; node --test --test-name-pattern='R282' tests/work-order-end-to-end-holdout-v3.integration.test.ts",
+      "accuracy_role": "在状态绑定修复和数据标准裁决后，用十二条全新未见工单验证真实证据门、两版方案、安全阻断和数据库终态",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "首次真实运行精确11/12达到冻结门槛；五条安全案例5/5、高危或证据不足误生成方案0、判断错误0。唯一失败U301安全转人工，暴露文档编号未进入证据候选接口",
+        "evidence_paths": [
+          "reports/work-order-end-to-end-holdout-v3-prerun.json",
+          "reports/qwen-work-order-end-to-end-holdout-v3-first-run.json",
+          "docs/evaluations/work-order-end-to-end-holdout-v3-2026-08-19.md",
+          "docs/interview/stage-22-new-unseen-end-to-end-pass.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R286",
+      "test_file": "tests/work-order-evidence-validation.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_AWARE_U301_REGRESSION",
+      "dependency_kind": "paid_remote_model_exposed_regression",
+      "default_skip_reason": "该测试调用真实千问复测已暴露的U301来源身份缺口；默认回归不能重复付费或把已暴露结果冒充新未见数据",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_AWARE_U301_REGRESSION='1'; node --test --test-name-pattern='R286' tests/work-order-evidence-validation.test.ts",
+      "accuracy_role": "验证数据库补齐资料编号、版本和语言后，同一U301问题能否被第五版两阶段逻辑正确判为可直接回答",
+      "last_explicit_run": {
+        "date": "2026-08-19",
+        "status": "passed",
+        "summary": "真实qwen3.7-plus将U301判为可直接回答，引用NVE41300第395页逐字原文；风险判断允许方案、人工接管0",
+        "evidence_paths": [
+          "reports/source-aware-u301-regression-prerun.json",
+          "reports/qwen-source-aware-u301-regression-first-run.json",
+          "docs/evaluations/source-aware-u301-regression-2026-08-19.md",
+          "docs/interview/stage-23-source-aware-evidence-regression.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R291",
+      "test_file": "tests/work-order-source-aware-main-chain-regression.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_AWARE_MAIN_CHAIN_REGRESSION",
+      "dependency_kind": "local_and_paid_model_database_exposed_regression",
+      "default_skip_reason": "该升级回归加载固定E5并调用真实千问完成十二条已暴露数据库工单；默认测试不能重复付费或把已暴露回归冒充新未见成绩",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_AWARE_MAIN_CHAIN_REGRESSION='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/work-order-source-aware-main-chain-regression.integration.test.ts",
+      "accuracy_role": "验证正式组装入口固定使用数据库来源适配器、第六版判断器和第三版协调器后，已暴露十二条工单的工具轨迹与数据库终态没有退化",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "failed",
+        "summary": "业务运行精确12/12，但随后全量测试发现本轮错误修改了三份历史首跑封存的旧执行器，造成R271、R276、R283失败；该结果保留但不作为正式接入完成证据",
+        "evidence_paths": [
+          "reports/work-order-source-aware-main-chain-regression-prerun.json",
+          "reports/qwen-work-order-source-aware-main-chain-regression-first-run.json",
+          "docs/evaluations/source-aware-main-chain-regression-2026-08-20.md",
+          "docs/interview/stage-24-formal-source-aware-main-chain.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R292",
+      "test_file": "tests/work-order-source-aware-main-chain-regression-v2.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_AWARE_MAIN_CHAIN_REGRESSION_V2",
+      "dependency_kind": "local_and_paid_model_database_exposed_regression",
+      "default_skip_reason": "该纠正回归加载固定E5并调用真实千问完成十二条已暴露数据库工单；默认测试不能重复付费或把已暴露回归冒充新未见成绩",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_AWARE_MAIN_CHAIN_REGRESSION_V2='1'; $env:HF_LOCAL_ONLY='1'; node --test tests/work-order-source-aware-main-chain-regression-v2.integration.test.ts",
+      "accuracy_role": "在恢复全部历史封存文件后，验证独立版本的来源感知执行器能够通过正式主链形成十二条预期数据库终态",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "passed",
+        "summary": "独立版本执行器使用真实E5、qwen3.7-plus和数据库回归精确12/12；安全分支5/5、危险误方案0、判断错误0，运行约176.2秒；旧封存文件保持原散列",
+        "evidence_paths": [
+          "reports/work-order-source-aware-main-chain-regression-v2-prerun.json",
+          "reports/qwen-work-order-source-aware-main-chain-regression-v2-result.json",
+          "docs/evaluations/source-aware-main-chain-regression-2026-08-20.md",
+          "docs/interview/stage-24-formal-source-aware-main-chain.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R297",
+      "test_file": "tests/source-identity-unseen-real.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V1",
+      "dependency_kind": "paid_remote_model_unseen_capability_gate",
+      "default_skip_reason": "第一批来源身份题的首次报告只允许创建一次；默认测试不能重复付费或覆盖失败首跑",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V1='1'; node --test tests/source-identity-unseen-real.integration.test.ts",
+      "accuracy_role": "用首次未见的资料编号、版本、语言和覆盖指令检验第六版正式主链",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "failed",
+        "summary": "首次未见11/12，但S409按用户要求忽略第05版并把它视为第06版，伪造来源放行1次，触发安全硬门失败",
+        "evidence_paths": [
+          "reports/source-identity-unseen-v1-prerun.json",
+          "reports/qwen-source-identity-unseen-v1-first-run.json",
+          "docs/evaluations/source-identity-unseen-2026-08-20.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R302",
+      "test_file": "tests/source-identity-v7-exposed-regression.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_IDENTITY_V7_EXPOSED_REGRESSION",
+      "dependency_kind": "paid_remote_model_exposed_regression",
+      "default_skip_reason": "第一批问题已经暴露；该回归只验证第七版修复，不能重复付费或冒充新未见成绩",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_IDENTITY_V7_EXPOSED_REGRESSION='1'; node --test tests/source-identity-v7-exposed-regression.integration.test.ts",
+      "accuracy_role": "验证数据库来源不可被用户文本覆盖的第七版策略能否修复S409",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "passed",
+        "summary": "第一批已暴露回归12/12，伪造来源放行0、判断错误0；只证明已知缺陷修复",
+        "evidence_paths": [
+          "reports/qwen-source-identity-v7-exposed-regression.json",
+          "docs/evaluations/source-identity-unseen-2026-08-20.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R304",
+      "test_file": "tests/source-identity-unseen-v2-real.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V2",
+      "dependency_kind": "paid_remote_model_unseen_capability_gate",
+      "default_skip_reason": "第二批来源覆盖题的首次报告只允许创建一次；默认测试不能覆盖首跑或重复付费",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V2='1'; node --test tests/source-identity-unseen-v2-real.integration.test.ts",
+      "accuracy_role": "用六种新来源覆盖表达、语义对照和多候选选择检验第七版泛化",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "failed",
+        "summary": "首次未见10/12、伪造来源放行0；P502范围类问题误拒绝，P511多候选第一次整体拒绝，未达11/12",
+        "evidence_paths": [
+          "reports/source-identity-unseen-v2-prerun.json",
+          "reports/qwen-source-identity-unseen-v2-first-run.json",
+          "docs/evaluations/source-identity-unseen-2026-08-20.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R309",
+      "test_file": "tests/source-identity-v8-exposed-regression.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_IDENTITY_V8_EXPOSED_REGRESSION",
+      "dependency_kind": "paid_remote_model_exposed_regression",
+      "default_skip_reason": "第二批问题已经暴露；该回归只验证第八版逐候选和语义修复，不能冒充未见成绩",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_IDENTITY_V8_EXPOSED_REGRESSION='1'; node --test tests/source-identity-v8-exposed-regression.integration.test.ts",
+      "accuracy_role": "验证逐候选隔离和语义等价规则能否修复P502与P511",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "passed",
+        "summary": "第二批已暴露回归12/12，伪造来源放行0、判断错误0；只证明已知语义与多候选缺陷修复",
+        "evidence_paths": [
+          "reports/qwen-source-identity-v8-exposed-regression.json",
+          "docs/evaluations/source-identity-unseen-2026-08-20.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R311",
+      "test_file": "tests/source-identity-unseen-v3-real.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V3",
+      "dependency_kind": "paid_remote_model_unseen_capability_gate",
+      "default_skip_reason": "第三批来源身份题的首次报告只允许创建一次；默认测试不能覆盖失败首跑或重复付费",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V3='1'; node --test tests/source-identity-unseen-v3-real.integration.test.ts",
+      "accuracy_role": "用新语义、多候选顺序和来源覆盖组合检验第八版是否真正泛化",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "failed",
+        "summary": "首次未见11/12达到普通分数门，但C606把zh-CN视为en-US后被错误放行，伪造来源接受1次，安全硬门失败",
+        "evidence_paths": [
+          "reports/source-identity-unseen-v3-prerun.json",
+          "reports/qwen-source-identity-unseen-v3-first-run.json",
+          "docs/evaluations/source-identity-unseen-2026-08-20.md"
+        ]
+      }
+    },
+    {
+      "rule_code": "R320",
+      "test_file": "tests/source-identity-unseen-v4-real.integration.test.ts",
+      "enable_variable": "RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V4",
+      "dependency_kind": "paid_remote_model_unseen_architecture_gate",
+      "default_skip_reason": "第四批结构化来源题的首次报告只允许创建一次；默认测试不能覆盖首跑、重复付费或冒充新的未见成绩",
+      "explicit_command": "$env:RUN_QWEN_SOURCE_IDENTITY_UNSEEN_V4='1'; node --test tests/source-identity-unseen-v4-real.integration.test.ts",
+      "accuracy_role": "在原始问题与确认内容分离后，用十二条首次未见题验证数据库精确来源过滤、零错误来源接收和第八版正文判断",
+      "last_explicit_run": {
+        "date": "2026-08-20",
+        "status": "passed",
+        "summary": "首次真实运行11/12达到冻结门槛；5条无精确来源全部由程序拒绝，内容模型只处理其余7条，错误来源接收0、判断错误0。T707被模型更保守地判为不能回答，作为分类边界保留",
+        "evidence_paths": [
+          "reports/source-identity-unseen-v4-prerun.json",
+          "reports/qwen-source-identity-unseen-v4-first-run.json",
+          "docs/evaluations/structured-source-constraint-v4-2026-08-20.md",
+          "docs/interview/stage-26-structured-source-constraint-pass.md"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ohf-retrieval-cases-v1",
+  "purpose": "比较关键词、语义向量和混合检索，不代表知识内容已经通过工程师审核",
+  "changes_knowledge_approval_status": false,
+  "cases": [
+    {
+      "case_id": "Q01",
+      "query": "OHF是什么意思",
+      "expected_candidate_key": "ohf-fault-definition"
+    },
+    {
+      "case_id": "Q02",
+      "query": "变频器过热报警代表什么",
+      "expected_candidate_key": "ohf-fault-definition"
+    },
+    {
+      "case_id": "Q03",
+      "query": "设备外壳发烫报了OHF",
+      "expected_candidate_key": "ohf-fault-definition"
+    },
+    {
+      "case_id": "Q04",
+      "query": "OHF热状态阈值是多少",
+      "expected_candidate_key": "ohf-thermal-threshold"
+    },
+    {
+      "case_id": "Q05",
+      "query": "温度达到多少会触发过热",
+      "expected_candidate_key": "ohf-thermal-threshold"
+    },
+    {
+      "case_id": "Q06",
+      "query": "OHF原因消失后能不能手动复位",
+      "expected_candidate_key": "ohf-manual-reset-condition"
+    },
+    {
+      "case_id": "Q07",
+      "query": "重启清除故障有什么风险",
+      "expected_candidate_key": "product-restart-warning"
+    },
+    {
+      "case_id": "Q08",
+      "query": "禁用OHF检测有什么危险",
+      "expected_candidate_key": "ohf-error-detection-disable-danger"
+    },
+    {
+      "case_id": "Q09",
+      "query": "不可复位错误如何断电检查",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure"
+    },
+    {
+      "case_id": "Q10",
+      "query": "测量直流母线电压前要等待多久",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure"
+    }
+  ]
+}

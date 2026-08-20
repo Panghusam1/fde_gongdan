@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ohf-answerability-holdout-v1",
+  "purpose": "在不回看模型分数的前提下，验证从40题开发集提出的E5相似度拒答候选阈值；不改变知识审核状态，也不代表真实工厂查询分布",
+  "product_family_code": "ATV320",
+  "frozen_before_first_model_run": true,
+  "changes_knowledge_approval_status": false,
+  "threshold_policy": {
+    "policy_id": "e5-small-answerability-candidate-v1",
+    "derived_from_dataset_id": "ohf-retrieval-cases-v2-40",
+    "vector_similarity_minimum": 0.86,
+    "comparison": "greater_than_or_equal",
+    "frozen_before_holdout_run": true
+  },
+  "acceptance_targets": {
+    "answerable_correct_accept_rate_minimum": 0.75,
+    "unanswerable_abstain_accuracy_minimum": 1,
+    "accepted_precision_minimum": 0.9
+  },
+  "cases": [
+    {
+      "case_id": "H01",
+      "query": "设备面板显示OHF时，这个故障代码表示哪一类异常？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "expected_pdf_pages": [72]
+    },
+    {
+      "case_id": "H02",
+      "query": "代码OHF对应的是驱动器的哪种状态问题？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "expected_pdf_pages": [72]
+    },
+    {
+      "case_id": "H03",
+      "query": "热状态百分比达到哪个值会触发OHF阈值？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "expected_pdf_pages": [50]
+    },
+    {
+      "case_id": "H04",
+      "query": "额定热状态是100%，再升到多少会到过载报警点？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "expected_pdf_pages": [50]
+    },
+    {
+      "case_id": "H05",
+      "query": "故障原因消除后，怎样用分配的输入手动清除OHF？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "H06",
+      "query": "OHF是否属于原因消失以后可以人工复位的故障？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "H07",
+      "query": "驱动器的重启功能为什么可能引起设备意外动作？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "H08",
+      "query": "激活产品重启以前，需要先确认哪项安全条件？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "expected_pdf_pages": [310]
+    },
+    {
+      "case_id": "H09",
+      "query": "停用错误检测以后，为什么必须安排替代监控？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "expected_pdf_pages": [329]
+    },
+    {
+      "case_id": "H10",
+      "query": "错误检测功能关闭后，调试和测试有哪些强制要求？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "expected_pdf_pages": [329]
+    },
+    {
+      "case_id": "H11",
+      "query": "不可复位故障时，测量PA/+和PC/-之前要做哪些隔离和等待动作？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "expected_pdf_pages": [385]
+    },
+    {
+      "case_id": "H12",
+      "query": "直流母线降到多少伏以下才算完成放电检查？",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "expected_pdf_pages": [385]
+    },
+    {
+      "case_id": "H13",
+      "query": "ATV320现在的采购价格和交货周期是多少？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有价格和交期信息"
+    },
+    {
+      "case_id": "H14",
+      "query": "这台变频器保修几年，应该怎样申请售后？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有保修政策"
+    },
+    {
+      "case_id": "H15",
+      "query": "设备铭牌上的序列号应该登记到哪个系统？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有资产登记流程"
+    },
+    {
+      "case_id": "H16",
+      "query": "怎么配置Modbus通信地址和波特率？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有通信参数配置"
+    },
+    {
+      "case_id": "H17",
+      "query": "电机自整定参数应该怎样设置？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有电机自整定内容"
+    },
+    {
+      "case_id": "H18",
+      "query": "模拟量输入AI1应该接电压信号还是电流信号？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有模拟量接线信息"
+    },
+    {
+      "case_id": "H19",
+      "query": "更换散热风扇要购买哪个备件编号？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有备件编号"
+    },
+    {
+      "case_id": "H20",
+      "query": "设备外形尺寸和安装孔距是多少？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有机械尺寸"
+    },
+    {
+      "case_id": "H21",
+      "query": "怎样设置最高输出频率？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有输出频率参数"
+    },
+    {
+      "case_id": "H22",
+      "query": "这款设备支持哪些以太网通信模块？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有通信模块清单"
+    },
+    {
+      "case_id": "H23",
+      "query": "怎样查看累计运行时间和用电量？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有运行统计信息"
+    },
+    {
+      "case_id": "H24",
+      "query": "能不能在海拔3000米的现场直接使用？",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "abstain_reason": "当前六个OHF片段没有海拔适用条件"
+    }
+  ]
+}

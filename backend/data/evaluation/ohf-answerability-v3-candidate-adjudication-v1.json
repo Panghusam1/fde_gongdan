@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "adjudication_id": "ohf-answerability-v3-candidate-adjudication-v1",
+  "status": "provisional_project_audit_not_domain_engineer_approved",
+  "source_report_sha256": "3662d88105b407157f6be3b87e0d23702a2a37b9f824a64566db88374aa55f6a",
+  "pre_run_plan_sha256": "07669c05db6330ca56189ecfd0abbbd488af743b46e51bb10237d8be6533d882",
+  "changes_expected_verdicts": false,
+  "cases": [
+    {
+      "case_id": "V307",
+      "expected_verdict": "partially_related",
+      "original_expected_candidate_id": "ohf-fault-definition",
+      "acceptable_candidate_ids": [
+        "ohf-fault-definition",
+        "ohf-thermal-threshold"
+      ],
+      "predeclared_basis": "第五版完整回归前封存的architecture_probe已经记录该题唯一候选标签存在歧义",
+      "evidence_reason": "故障定义资料支持‘OHF表示设备过热’，热阈值资料支持‘OHF对应变频器热状态阈值’；两者都能支持问题前提，但都不包含外壳摄氏温度"
+    }
+  ],
+  "limits": [
+    "该审定只修正候选可接受集合，不修改预期分类，不覆盖原冻结报告",
+    "该审定由项目组基于已有官方手册摘录完成，尚未获得ATV320领域工程师签字",
+    "审定后分数必须与原始冻结分数同时报告"
+  ]
+}

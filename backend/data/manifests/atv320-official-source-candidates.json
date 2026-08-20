@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-08-18",
+  "records": [
+    {
+      "publisher": "Schneider Electric",
+      "title": "ATV320 编程手册",
+      "document_reference": "NVE41300",
+      "product_family": {
+        "manufacturer_name": "Schneider Electric",
+        "family_code": "ATV320",
+        "display_name": "Altivar Machine ATV320"
+      },
+      "source_type": "official_manual",
+      "official_url": "https://www.schneider-electric.cn/zh/download/document/NVE41300/",
+      "language_code": "zh-CN",
+      "version_label": "05",
+      "publisher_page_date": "2025-07-04",
+      "document_issue_label": "07/2024",
+      "file_name": "ATV320_Programming_manual_CN_NVE41300_05.pdf",
+      "acquisition_status": "downloaded",
+      "version_status": "unreviewed",
+      "sha256": "a6a033d439ab3340bde3d062979aba8bd6014762d12e2fb39aafe34aef000e57",
+      "local_path": "data/raw/official/schneider/atv320/ATV320_Programming_manual_CN_NVE41300_05.pdf",
+      "notes": "元数据已由厂商官方页面核对；文件已从厂商下载地址取得并计算 SHA-256，版本仍须经过内容审核才能设为当前有效。",
+      "page_extraction": {
+        "artifact_path": "data/processed/schneider/atv320/NVE41300-v05-zh-CN-pages.json",
+        "extractor_name": "pypdf",
+        "extractor_version": "6.10.0",
+        "page_count": 440,
+        "extracted_page_count": 437,
+        "blank_page_numbers": [14, 436, 439],
+        "database_status": "ready_to_import"
+      }
+    }
+  ]
+}

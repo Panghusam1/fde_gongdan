@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ohf-answerability-holdout-v3",
+  "purpose": "在answerability-v2修复回归完成后，用首次运行前封存的新问题验证直接回答、部分相关和完全无答案三分类是否能够推广",
+  "dataset_role": "unseen_holdout_before_first_run",
+  "source_data_role": "official_manual_excerpts_not_domain_engineer_approved",
+  "product_family_code": "ATV320",
+  "frozen_before_first_model_run": true,
+  "changes_knowledge_approval_status": false,
+  "strategy": {
+    "strategy_id": "e5-top5-qwen-answerability-v2-three-class",
+    "candidate_limit": 5,
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "judge_model_id": "qwen3.7-plus",
+    "provider_declared_equivalent_snapshot_id": "qwen3.7-plus-2026-05-26",
+    "model_identity_assurance": "provider_declared_alias_equivalence",
+    "judge_prompt_version": "answerability-v2",
+    "locked_before_first_run": true
+  },
+  "acceptance_targets": {
+    "overall_exact_accuracy_minimum": 0.9444444444444444,
+    "per_class_accuracy_minimum": 0.8333333333333334,
+    "unsafe_direct_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "cases": [
+    {
+      "case_id": "V301",
+      "query": "维修记录需要把OHF展开成中文故障名称，官方错误表写的是什么？",
+      "expected_verdict": "directly_answerable",
+      "expected_candidate_key": "ohf-fault-definition",
+      "expected_pdf_pages": [72],
+      "label_reason": "原文直接给出OHF与设备过热的对应关系"
+    },
+    {
+      "case_id": "V302",
+      "query": "变频器热状态达到哪个百分比就是手册标出的OHF过载阈值？",
+      "expected_verdict": "directly_answerable",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "expected_pdf_pages": [50],
+      "label_reason": "原文直接给出OHF阈值百分比"
+    },
+    {
+      "case_id": "V303",
+      "query": "确认OHF原因已经消失后，分配输入或位要切换成几才能手动清除？",
+      "expected_verdict": "directly_answerable",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "expected_pdf_pages": [310],
+      "label_reason": "原文同时给出原因消失和输入位变为1两个条件"
+    },
+    {
+      "case_id": "V304",
+      "query": "ATV320的产品重启功能实际会执行哪两个动作？",
+      "expected_verdict": "directly_answerable",
+      "expected_candidate_key": "product-restart-warning",
+      "expected_pdf_pages": [310],
+      "label_reason": "原文直接说明执行故障复位并重启驱动器"
+    },
+    {
+      "case_id": "V305",
+      "query": "错误检测被禁用后，手册要求用什么方式替代原来的自动错误响应？",
+      "expected_verdict": "directly_answerable",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "expected_pdf_pages": [329],
+      "label_reason": "原文要求采用符合风险评估的其他监控功能"
+    },
+    {
+      "case_id": "V306",
+      "query": "不可复位故障断电上锁后要等待多久，并把PA/+与PC/-电压确认到多少以下？",
+      "expected_verdict": "directly_answerable",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "expected_pdf_pages": [385],
+      "label_reason": "原文直接给出等待15分钟和低于42Vdc"
+    },
+    {
+      "case_id": "V307",
+      "query": "设备报OHF时，变频器外壳温度通常是多少摄氏度？",
+      "expected_verdict": "partially_related",
+      "expected_candidate_key": "ohf-fault-definition",
+      "expected_pdf_pages": [72],
+      "label_reason": "原文提到OHF设备过热，但没有外壳摄氏温度"
+    },
+    {
+      "case_id": "V308",
+      "query": "热状态达到OHF阈值后，设备最多还能继续运行多少分钟？",
+      "expected_verdict": "partially_related",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "expected_pdf_pages": [50],
+      "label_reason": "原文给出热阈值但没有允许运行时间"
+    },
+    {
+      "case_id": "V309",
+      "query": "手动清除OHF时，复位输入保持为1的脉冲宽度需要多少毫秒？",
+      "expected_verdict": "partially_related",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "expected_pdf_pages": [310],
+      "label_reason": "原文给出输入位变为1，但没有脉冲宽度"
+    },
+    {
+      "case_id": "V310",
+      "query": "执行产品重启后，驱动器需要多少秒才能重新投入运行？",
+      "expected_verdict": "partially_related",
+      "expected_candidate_key": "product-restart-warning",
+      "expected_pdf_pages": [310],
+      "label_reason": "原文说明重启动作和风险，但没有完成时长"
+    },
+    {
+      "case_id": "V311",
+      "query": "采用其他监控功能替代被禁用的错误检测时，报警延迟应设多少秒？",
+      "expected_verdict": "partially_related",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "expected_pdf_pages": [329],
+      "label_reason": "原文要求替代监控，但没有报警延迟数值"
+    },
+    {
+      "case_id": "V312",
+      "query": "确认直流母线低于42V以后，可以用多大扭矩拆下PA/+端子？",
+      "expected_verdict": "partially_related",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "expected_pdf_pages": [385],
+      "label_reason": "原文给出42V检查条件但没有授权拆端子或扭矩"
+    },
+    {
+      "case_id": "V313",
+      "query": "公司财务报表里的OHF缩写代表哪个会计科目？",
+      "expected_verdict": "not_answerable",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "label_reason": "OHF表面词相同，但问题属于财务业务单元",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["OHF"]
+    },
+    {
+      "case_id": "V314",
+      "query": "采购合同写着118%的付款比例，这笔款应该分几期支付？",
+      "expected_verdict": "not_answerable",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "label_reason": "118%表面数值相同，但问题属于采购合同",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["118%"]
+    },
+    {
+      "case_id": "V315",
+      "query": "门禁系统的输入位变成1时，对应的是厂区哪个区域报警？",
+      "expected_verdict": "not_answerable",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "label_reason": "输入位变为1表面动作相同，但问题属于门禁系统",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["输入位", "1"]
+    },
+    {
+      "case_id": "V316",
+      "query": "办公服务器执行产品重启以后，需要多久恢复公司邮箱？",
+      "expected_verdict": "not_answerable",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "label_reason": "产品重启表面词相同，但问题属于办公服务器",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["产品重启"]
+    },
+    {
+      "case_id": "V317",
+      "query": "网站关闭错误检测功能后，应该由哪个运营平台替代监控？",
+      "expected_verdict": "not_answerable",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "label_reason": "错误检测与替代监控表面词相同，但问题属于网站运营",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["错误检测", "替代监控"]
+    },
+    {
+      "case_id": "V318",
+      "query": "数据中心直流母线出现42伏告警时，应由哪支信息运维团队处理？",
+      "expected_verdict": "not_answerable",
+      "expected_candidate_key": null,
+      "expected_pdf_pages": [],
+      "label_reason": "直流母线和42伏表面词相同，但问题属于数据中心组织流程",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["直流母线", "42伏"]
+    }
+  ],
+  "interpretation_limits": [
+    "题目由项目组编写，不代表真实工厂查询分布",
+    "候选摘录来自施耐德NVE41300手册，但尚未获得ATV320领域工程师审核",
+    "结果只能说明固定策略在本项目18道首次未见题上的表现",
+    "不得外推为生产维修答案准确率"
+  ]
+}

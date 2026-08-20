@@ -1,0 +1,409 @@
+{
+  "schema_version": 2,
+  "dataset_id": "ohf-retrieval-cases-v2-40",
+  "purpose": "用40道固定问题比较关键词、E5和混合检索，并单独暴露错型号与当前语料无答案场景；不改变知识审核状态",
+  "product_family_code": "ATV320",
+  "changes_knowledge_approval_status": false,
+  "cases": [
+    {
+      "case_id": "Q01",
+      "query": "OHF是什么意思",
+      "language_style": "exact_term",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "source_basis": { "candidate_key": "ohf-fault-definition", "pdf_pages": [72] }
+    },
+    {
+      "case_id": "Q02",
+      "query": "ATV320故障代码OHF的中文含义",
+      "language_style": "exact_term",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "source_basis": { "candidate_key": "ohf-fault-definition", "pdf_pages": [72] }
+    },
+    {
+      "case_id": "Q03",
+      "query": "机器屏幕跳出OHF是在说哪里过热",
+      "language_style": "colloquial",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "source_basis": { "candidate_key": "ohf-fault-definition", "pdf_pages": [72] }
+    },
+    {
+      "case_id": "Q04",
+      "query": "变频器外壳很烫还报OHF，这个码表示啥",
+      "language_style": "colloquial",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "source_basis": { "candidate_key": "ohf-fault-definition", "pdf_pages": [72] }
+    },
+    {
+      "case_id": "Q05",
+      "query": "设备报告过热类故障时，OHF对应的故障名称是什么",
+      "language_style": "paraphrase",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-fault-definition",
+      "source_basis": { "candidate_key": "ohf-fault-definition", "pdf_pages": [72] }
+    },
+    {
+      "case_id": "Q06",
+      "query": "OHF热状态阈值是多少",
+      "language_style": "exact_term",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "source_basis": { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+    },
+    {
+      "case_id": "Q07",
+      "query": "变频器热状态达到百分之多少触发OHF",
+      "language_style": "exact_term",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "source_basis": { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+    },
+    {
+      "case_id": "Q08",
+      "query": "热状态跑到多少就会报过热",
+      "language_style": "colloquial",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "source_basis": { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+    },
+    {
+      "case_id": "Q09",
+      "query": "面板上的热负载百分比到多高会跳OHF",
+      "language_style": "colloquial",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "source_basis": { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+    },
+    {
+      "case_id": "Q10",
+      "query": "额定热状态为100%时，过载报警对应的热状态界限是什么",
+      "language_style": "paraphrase",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-thermal-threshold",
+      "source_basis": { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+    },
+    {
+      "case_id": "Q11",
+      "query": "OHF可以手动清除吗",
+      "language_style": "exact_term",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "source_basis": { "candidate_key": "ohf-manual-reset-condition", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q12",
+      "query": "手动故障复位的前提条件是什么",
+      "language_style": "exact_term",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "source_basis": { "candidate_key": "ohf-manual-reset-condition", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q13",
+      "query": "过热原因没了以后能不能按复位",
+      "language_style": "colloquial",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "source_basis": { "candidate_key": "ohf-manual-reset-condition", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q14",
+      "query": "温度降下来后这个OHF能手动消掉吗",
+      "language_style": "colloquial",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "source_basis": { "candidate_key": "ohf-manual-reset-condition", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q15",
+      "query": "当检测错误原因已经消失，分配输入变为1是否允许清除OHF",
+      "language_style": "paraphrase",
+      "risk_class": "reference",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-manual-reset-condition",
+      "source_basis": { "candidate_key": "ohf-manual-reset-condition", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q16",
+      "query": "产品重启功能会执行什么",
+      "language_style": "exact_term",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "source_basis": { "candidate_key": "product-restart-warning", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q17",
+      "query": "使用重启功能前必须确认什么",
+      "language_style": "exact_term",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "source_basis": { "candidate_key": "product-restart-warning", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q18",
+      "query": "直接重启清故障会不会让设备突然动作",
+      "language_style": "colloquial",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "source_basis": { "candidate_key": "product-restart-warning", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q19",
+      "query": "我想靠重启把报警抹掉，有什么危险",
+      "language_style": "colloquial",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "source_basis": { "candidate_key": "product-restart-warning", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q20",
+      "query": "同时执行故障复位与驱动器重启时应防范哪类未预期运行风险",
+      "language_style": "paraphrase",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "product-restart-warning",
+      "source_basis": { "candidate_key": "product-restart-warning", "pdf_pages": [310] }
+    },
+    {
+      "case_id": "Q21",
+      "query": "禁用OHF错误检测有什么危险",
+      "language_style": "exact_term",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "source_basis": { "candidate_key": "ohf-error-detection-disable-danger", "pdf_pages": [329] }
+    },
+    {
+      "case_id": "Q22",
+      "query": "使用错误检测禁用参数前要做什么风险评估",
+      "language_style": "exact_term",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "source_basis": { "candidate_key": "ohf-error-detection-disable-danger", "pdf_pages": [329] }
+    },
+    {
+      "case_id": "Q23",
+      "query": "把过热保护关掉行不行",
+      "language_style": "colloquial",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "source_basis": { "candidate_key": "ohf-error-detection-disable-danger", "pdf_pages": [329] }
+    },
+    {
+      "case_id": "Q24",
+      "query": "别让机器再报OHF，能直接屏蔽这个监控吗",
+      "language_style": "colloquial",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "source_basis": { "candidate_key": "ohf-error-detection-disable-danger", "pdf_pages": [329] }
+    },
+    {
+      "case_id": "Q25",
+      "query": "若以其他监控替代被禁用的自动错误响应，需要满足哪些测试与法规条件",
+      "language_style": "paraphrase",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "ohf-error-detection-disable-danger",
+      "source_basis": { "candidate_key": "ohf-error-detection-disable-danger", "pdf_pages": [329] }
+    },
+    {
+      "case_id": "Q26",
+      "query": "不可复位错误的断电检查步骤是什么",
+      "language_style": "exact_term",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "source_basis": { "candidate_key": "unresettable-fault-power-isolation-procedure", "pdf_pages": [385] }
+    },
+    {
+      "case_id": "Q27",
+      "query": "测量直流母线电压前要等待多久",
+      "language_style": "exact_term",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "source_basis": { "candidate_key": "unresettable-fault-power-isolation-procedure", "pdf_pages": [385] }
+    },
+    {
+      "case_id": "Q28",
+      "query": "断电以后是不是马上就能摸里面",
+      "language_style": "colloquial",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "source_basis": { "candidate_key": "unresettable-fault-power-isolation-procedure", "pdf_pages": [385] }
+    },
+    {
+      "case_id": "Q29",
+      "query": "灯灭了能不能说明母线没电",
+      "language_style": "colloquial",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "source_basis": { "candidate_key": "unresettable-fault-power-isolation-procedure", "pdf_pages": [385] }
+    },
+    {
+      "case_id": "Q30",
+      "query": "如何通过隔离电源、等待放电并检查PA/+与PC/-之间电压确认安全",
+      "language_style": "paraphrase",
+      "risk_class": "high_risk",
+      "scope_class": "in_scope",
+      "expected_behavior": "hit",
+      "expected_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "source_basis": { "candidate_key": "unresettable-fault-power-isolation-procedure", "pdf_pages": [385] }
+    },
+    {
+      "case_id": "Q31",
+      "query": "当前设备是ATV930，请查询它的OHF说明",
+      "language_style": "exact_term",
+      "risk_class": "not_applicable",
+      "scope_class": "out_of_scope",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "当前评测语料只登记ATV320产品族，不能把ATV320的OHF片段冒充ATV930资料" }
+    },
+    {
+      "case_id": "Q32",
+      "query": "请给ATV630的产品重启参数",
+      "language_style": "exact_term",
+      "risk_class": "not_applicable",
+      "scope_class": "out_of_scope",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "ATV630不属于当前ATV320工单和六个候选片段的产品范围" }
+    },
+    {
+      "case_id": "Q33",
+      "query": "ATV340直流母线端子如何测量",
+      "language_style": "paraphrase",
+      "risk_class": "not_applicable",
+      "scope_class": "out_of_scope",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "当前来源只证明ATV320候选内容，不能迁移为ATV340操作依据" }
+    },
+    {
+      "case_id": "Q34",
+      "query": "ATV12报故障后怎样复位",
+      "language_style": "colloquial",
+      "risk_class": "not_applicable",
+      "scope_class": "out_of_scope",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "ATV12不是当前规范型号，不能返回ATV320的复位条件" }
+    },
+    {
+      "case_id": "Q35",
+      "query": "ATV610怎样关闭错误检测",
+      "language_style": "colloquial",
+      "risk_class": "not_applicable",
+      "scope_class": "out_of_scope",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "ATV610超出当前产品范围，且关闭错误检测属于不能跨型号套用的高危问题" }
+    },
+    {
+      "case_id": "Q36",
+      "query": "ATV320的额定输入电流是多少",
+      "language_style": "exact_term",
+      "risk_class": "not_applicable",
+      "scope_class": "unanswerable",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "当前六个OHF候选片段不包含按具体型号区分的额定输入电流" }
+    },
+    {
+      "case_id": "Q37",
+      "query": "ATV320支持哪些通信协议",
+      "language_style": "exact_term",
+      "risk_class": "not_applicable",
+      "scope_class": "unanswerable",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "当前六个OHF候选片段没有通信协议知识" }
+    },
+    {
+      "case_id": "Q38",
+      "query": "这台ATV320有多大，安装要留多少位置",
+      "language_style": "colloquial",
+      "risk_class": "not_applicable",
+      "scope_class": "unanswerable",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "当前六个OHF候选片段不含型号尺寸和安装间距" }
+    },
+    {
+      "case_id": "Q39",
+      "query": "ATV320坏了厂家保几年",
+      "language_style": "colloquial",
+      "risk_class": "not_applicable",
+      "scope_class": "unanswerable",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "当前六个OHF候选片段没有保修政策，且政策不能由技术手册片段推断" }
+    },
+    {
+      "case_id": "Q40",
+      "query": "请根据现有资料说明ATV320现在的市场价格",
+      "language_style": "paraphrase",
+      "risk_class": "not_applicable",
+      "scope_class": "unanswerable",
+      "expected_behavior": "abstain",
+      "expected_candidate_key": null,
+      "source_basis": { "reason": "当前技术候选片段没有价格数据，价格也属于随时间变化的信息" }
+    }
+  ]
+}

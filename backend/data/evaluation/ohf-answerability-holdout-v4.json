@@ -1,0 +1,219 @@
+{
+  "schema_version": 1,
+  "dataset_id": "ohf-answerability-holdout-v4",
+  "purpose": "在第五版两阶段判断流程和多证据计分规则锁定后，用从未运行的新问题验证类别与可接受证据选择能否推广",
+  "dataset_role": "unseen_holdout_before_first_run",
+  "source_data_role": "official_manual_excerpts_not_domain_engineer_approved",
+  "product_family_code": "ATV320",
+  "frozen_before_first_model_run": true,
+  "changes_knowledge_approval_status": false,
+  "strategy": {
+    "strategy_id": "e5-top5-qwen-answerability-v5-two-stage-multi-evidence",
+    "candidate_limit": 5,
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "judge_model_id": "qwen3.7-plus",
+    "provider_declared_equivalent_snapshot_id": "qwen3.7-plus-2026-05-26",
+    "model_identity_assurance": "provider_declared_alias_equivalence",
+    "judge_prompt_version": "answerability-v5-two-stage",
+    "locked_before_first_run": true
+  },
+  "acceptance_targets": {
+    "overall_verdict_accuracy_minimum": 0.9444444444444444,
+    "per_class_verdict_accuracy_minimum": 0.8333333333333334,
+    "overall_adjudicated_exact_accuracy_minimum": 0.9444444444444444,
+    "per_class_adjudicated_exact_accuracy_minimum": 0.8333333333333334,
+    "unsafe_direct_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "cases": [
+    {
+      "case_id": "V401",
+      "query": "错误代码表里，方括号中的‘设备过热’对应哪个三字母代码？",
+      "expected_verdict": "directly_answerable",
+      "primary_candidate_key": "ohf-fault-definition",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-fault-definition", "pdf_pages": [72] }
+      ],
+      "label_reason": "错误代码条目直接给出设备过热与OHF的对应关系"
+    },
+    {
+      "case_id": "V402",
+      "query": "手册把变频器100%的热状态定义成什么状态？",
+      "expected_verdict": "directly_answerable",
+      "primary_candidate_key": "ohf-thermal-threshold",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+      ],
+      "label_reason": "热状态原文直接说明100%等于额定热状态"
+    },
+    {
+      "case_id": "V403",
+      "query": "检测到的原因消失后，分配的输入或位要变成什么值才可手动清除？",
+      "expected_verdict": "directly_answerable",
+      "primary_candidate_key": "ohf-manual-reset-condition",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-manual-reset-condition", "pdf_pages": [310] }
+      ],
+      "label_reason": "复位条件直接给出输入或位变为1"
+    },
+    {
+      "case_id": "V404",
+      "query": "产品重启除了重启驱动器以外，还会先执行哪个动作？",
+      "expected_verdict": "directly_answerable",
+      "primary_candidate_key": "product-restart-warning",
+      "acceptable_evidence": [
+        { "candidate_key": "product-restart-warning", "pdf_pages": [310] }
+      ],
+      "label_reason": "产品重启警告直接说明会执行故障复位并重启驱动器"
+    },
+    {
+      "case_id": "V405",
+      "query": "启用替代监视功能以后，手册要求对哪个对象进行调试与测试？",
+      "expected_verdict": "directly_answerable",
+      "primary_candidate_key": "ohf-error-detection-disable-danger",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-error-detection-disable-danger", "pdf_pages": [329] }
+      ],
+      "label_reason": "危险警告直接要求调试与测试系统"
+    },
+    {
+      "case_id": "V406",
+      "query": "直流总线电容没有完全放电时，手册要求联系谁，并且禁止对变频器做哪两件事？",
+      "expected_verdict": "directly_answerable",
+      "primary_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "acceptable_evidence": [
+        { "candidate_key": "unresettable-fault-power-isolation-procedure", "pdf_pages": [385] }
+      ],
+      "label_reason": "原文连续说明联系当地施耐德代表且不要修理或运行变频器"
+    },
+    {
+      "case_id": "V407",
+      "query": "OHF与设备过热或热状态有关，那么操作面板上的OHF会显示什么颜色？",
+      "expected_verdict": "partially_related",
+      "primary_candidate_key": "ohf-fault-definition",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-fault-definition", "pdf_pages": [72] },
+        { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+      ],
+      "label_reason": "两份资料都支持OHF与过热或热状态有关，但都没有面板显示颜色"
+    },
+    {
+      "case_id": "V408",
+      "query": "变频器达到100%额定热状态后，手册允许连续运行多少小时？",
+      "expected_verdict": "partially_related",
+      "primary_candidate_key": "ohf-thermal-threshold",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-thermal-threshold", "pdf_pages": [50] }
+      ],
+      "label_reason": "资料定义100%额定热状态，但没有允许连续运行时长"
+    },
+    {
+      "case_id": "V409",
+      "query": "用输入位清除OHF时，这个1信号至少需要保持多少个控制周期？",
+      "expected_verdict": "partially_related",
+      "primary_candidate_key": "ohf-manual-reset-condition",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-manual-reset-condition", "pdf_pages": [310] }
+      ],
+      "label_reason": "资料说明输入位变为1可清除OHF，但没有保持周期"
+    },
+    {
+      "case_id": "V410",
+      "query": "重启功能执行故障复位并重启驱动器后，会自动重试几次？",
+      "expected_verdict": "partially_related",
+      "primary_candidate_key": "product-restart-warning",
+      "acceptable_evidence": [
+        { "candidate_key": "product-restart-warning", "pdf_pages": [310] }
+      ],
+      "label_reason": "资料支持产品重启的动作，但没有自动重试次数"
+    },
+    {
+      "case_id": "V411",
+      "query": "使用其他监控功能替代被禁用的错误检测时，手册指定了哪个传感器品牌？",
+      "expected_verdict": "partially_related",
+      "primary_candidate_key": "ohf-error-detection-disable-danger",
+      "acceptable_evidence": [
+        { "candidate_key": "ohf-error-detection-disable-danger", "pdf_pages": [329] }
+      ],
+      "label_reason": "资料要求使用其他监控功能，但没有指定传感器品牌"
+    },
+    {
+      "case_id": "V412",
+      "query": "测得PA/+与PC/-低于42Vdc后，手册规定万用表应切到哪个量程？",
+      "expected_verdict": "partially_related",
+      "primary_candidate_key": "unresettable-fault-power-isolation-procedure",
+      "acceptable_evidence": [
+        { "candidate_key": "unresettable-fault-power-isolation-procedure", "pdf_pages": [385] }
+      ],
+      "label_reason": "资料给出测量端子和低于42Vdc条件，但没有万用表量程"
+    },
+    {
+      "case_id": "V413",
+      "query": "人力资源看板把员工‘100%额定热状态’设为满勤时，对应哪个绩效等级？",
+      "expected_verdict": "not_answerable",
+      "primary_candidate_key": null,
+      "acceptable_evidence": [],
+      "label_reason": "表面词来自热状态资料，但问题属于人力资源绩效业务",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["100%", "额定热状态"]
+    },
+    {
+      "case_id": "V414",
+      "query": "手机应用里‘输入或位更改为1’代表哪个开关已经打开？",
+      "expected_verdict": "not_answerable",
+      "primary_candidate_key": null,
+      "acceptable_evidence": [],
+      "label_reason": "表面动作与复位资料相同，但问题属于手机应用界面",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["输入或位", "1"]
+    },
+    {
+      "case_id": "V415",
+      "query": "云服务器控制台执行‘故障复位并重启’后，哪个容器会先恢复？",
+      "expected_verdict": "not_answerable",
+      "primary_candidate_key": null,
+      "acceptable_evidence": [],
+      "label_reason": "故障复位并重启表面动作相同，但问题属于云服务器容器业务",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["故障复位", "重启"]
+    },
+    {
+      "case_id": "V416",
+      "query": "保险项目完成‘全面风险评估’后，应选择哪家公司的监控服务？",
+      "expected_verdict": "not_answerable",
+      "primary_candidate_key": null,
+      "acceptable_evidence": [],
+      "label_reason": "风险评估与监控表面词相同，但问题属于保险项目采购",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["全面风险评估", "监控"]
+    },
+    {
+      "case_id": "V417",
+      "query": "电动汽车充电桩的PA/+与PC/-低于42Vdc时，保修条款允许用户自行维修吗？",
+      "expected_verdict": "not_answerable",
+      "primary_candidate_key": null,
+      "acceptable_evidence": [],
+      "label_reason": "端子与电压表面信息相同，但问题明确属于充电桩及其保修条款",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["PA/+", "PC/-", "42Vdc"]
+    },
+    {
+      "case_id": "V418",
+      "query": "采购合同写明联系当地Schneider Electric代表时，能申请多少折扣？",
+      "expected_verdict": "not_answerable",
+      "primary_candidate_key": null,
+      "acceptable_evidence": [],
+      "label_reason": "厂商代表表面词相同，但问题属于采购折扣而不是设备放电处置",
+      "boundary_kind": "same_surface_terms_different_business_unit",
+      "surface_overlap_terms": ["Schneider Electric代表"]
+    }
+  ],
+  "interpretation_limits": [
+    "题目由项目组根据官方摘录编写，不代表真实工厂查询分布",
+    "候选摘录来自施耐德NVE41300手册，但尚未获得ATV320领域工程师审核",
+    "可接受证据集合是项目组预标注，尚未获得领域双人复核",
+    "结果只能说明固定第五版策略在本项目18道首次未见问题上的表现",
+    "不得外推为生产维修答案准确率"
+  ]
+}

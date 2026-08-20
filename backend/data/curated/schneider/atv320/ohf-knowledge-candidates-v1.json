@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "source_document_reference": "NVE41300",
+  "source_version_label": "05",
+  "language_code": "zh-CN",
+  "extractor_name": "pypdf",
+  "extractor_version": "6.10.0",
+  "chunking_method": "manual_selection",
+  "chunker_name": "atv320-ohf-curation",
+  "chunker_version": "1.0.0",
+  "review_status": "unreviewed",
+  "candidates": [
+    {
+      "candidate_key": "ohf-fault-definition",
+      "content_kind": "fault_definition",
+      "source_severity": "information",
+      "usage_policy": "reference_only",
+      "fault_code": "OHF",
+      "section_title": "检测到的错误代码",
+      "selection_reason": "故障代码与中文含义必须作为一个完整条目，不能和相邻故障代码混在同一片段。",
+      "sources": [
+        {
+          "pdf_page_number": 72,
+          "excerpt": "• [设备过热] OHF: 设备过热"
+        }
+      ]
+    },
+    {
+      "candidate_key": "ohf-thermal-threshold",
+      "content_kind": "threshold",
+      "source_severity": "information",
+      "usage_policy": "reference_only",
+      "fault_code": "OHF",
+      "section_title": "变频器热状态",
+      "selection_reason": "阈值必须独立保存；基础文字提取把118%识别成了1 18%，所以机器原文保留不改，等待人工对照PDF核正。",
+      "sources": [
+        {
+          "pdf_page_number": 50,
+          "excerpt": "变频器热状态。100% = 额定热状态，1 18% =“OHF”阈值（变频器过载）。"
+        }
+      ]
+    },
+    {
+      "candidate_key": "ohf-manual-reset-condition",
+      "content_kind": "reset_condition",
+      "source_severity": "information",
+      "usage_policy": "reference_only",
+      "fault_code": "OHF",
+      "section_title": "故障复位",
+      "selection_reason": "一段说明何时允许复位，另一段证明OHF属于可手动清除列表；两者缺一不可，但中间的终端按键说明不必带入。",
+      "sources": [
+        {
+          "pdf_page_number": 310,
+          "excerpt": "如果检测到的错误的原因已消失，则当分配的输入或位更改为 1 时，可手动清除检测到的错误。"
+        },
+        {
+          "pdf_page_number": 310,
+          "excerpt": "可以手动清除检测到的以下错误：ASF、BRF、CNF、COF、DLF、EPF1、EPF2、FBES、\nFCF2、INF9、INFA、INFB、LCF、LFF3、OBF、OHF、OLC、OLF、OPF1、\nOPF2、OSF、OTFL、PHF、PTFL、SCF4、SCF5、SLF1、SLF2、SLF3、SOF、\nSPF、SSF、TJF、TNF 和 ULF。"
+        }
+      ]
+    },
+    {
+      "candidate_key": "product-restart-warning",
+      "content_kind": "safety_warning",
+      "source_severity": "warning",
+      "usage_policy": "engineer_only",
+      "section_title": "产品重启分配",
+      "selection_reason": "警告标题、危险后果和唯一操作要求必须保持为一个不可拆分的整体，不能只检索到重启步骤。",
+      "sources": [
+        {
+          "pdf_page_number": 310,
+          "excerpt": "警告\n未预期的设备运行\n“重启”功能执行“故障复位”并重启驱动器。\n• 确认激活该功能不会导致不安全情况。\n未按说明操作可能导致人身伤亡或设备损坏等严重后果。"
+        }
+      ]
+    },
+    {
+      "candidate_key": "ohf-error-detection-disable-danger",
+      "content_kind": "restricted_setting",
+      "source_severity": "danger",
+      "usage_policy": "engineer_only",
+      "fault_code": "OHF",
+      "section_title": "错误检测禁用",
+      "selection_reason": "OHF虽然出现在可禁用监控列表中，但必须与整段危险警告共同进入候选知识，避免系统只告诉用户如何禁用保护。",
+      "sources": [
+        {
+          "pdf_page_number": 329,
+          "excerpt": "危险\n错误检测功能被禁用，无法检测错误\n• 只能在按照适用于本设备与应用的所有法规与标准进行全面风险评估之后使用此参数。\n• 执行不会触发设备自动错误响应，但允许采用其他方式，按照所有适用法规与标准以及风险评估进行充分\n与相应响应的其他监控功能，来取代禁用的监控功能。\n• 在启用监视功能之后，调试与测试系统。\n• 在调试期间，通过在受控条件下的受控环境中进行测试与模拟来确认设备与系统正常运行。\n未按说明操作将导致人身伤亡等严重后果。"
+        },
+        {
+          "pdf_page_number": 329,
+          "excerpt": "可以手动清除检测到的以下错误：ANF、CNF、COF、CRF、DLF、ENF、EPF1、EPF2、\nFCF2、INFA、INFB、LFF3、OBF、OHF、OLC、OLF、OPF1、OPF2、OSF、\nOTFL、PHF、PTFL、SLF1、SLF2、SLF3、SOF、SPF、SSF、TJF、TNF 和 ULF。"
+        }
+      ]
+    },
+    {
+      "candidate_key": "unresettable-fault-power-isolation-procedure",
+      "content_kind": "procedure",
+      "source_severity": "information",
+      "usage_policy": "engineer_only",
+      "section_title": "清除检测到的错误",
+      "selection_reason": "原文没有单独的危险等级标签，但步骤涉及断电、上锁、等待放电和测量直流母线电压，按本项目业务规则只能转工程师处理。",
+      "sources": [
+        {
+          "pdf_page_number": 385,
+          "excerpt": "如果检测到不可复位的错误，则执行以下步骤：\n步骤 操作\n1\n断开所有电源，包括可能使用的外部控制电源。\n2\n将所有电源隔离开关锁定在断电位置。\n3\n等待 15 分钟，让直流母线电容充分放电（变频器的 LED 并不是有无直流母线电压的指示\n灯）。\n4\n测量 P A/+ 和 PC/- 端子之间的直流母线电压，确保该电压低于 42 Vdc。\n5\n如果直流总线电容器未完全放电，请联系当地的 Schneider Electric 代表。\n不要对变频器进行修理或运行。\n6\n查找并纠正检测到的错误的原因。\n7\n恢复对变频器供电，以确认已纠正检测到的错误。"
+        }
+      ]
+    }
+  ]
+}
