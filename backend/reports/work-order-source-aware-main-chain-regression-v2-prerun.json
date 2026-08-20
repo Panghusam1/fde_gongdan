@@ -1,0 +1,45 @@
+{
+  "record_version": 2,
+  "created_at": "2026-08-20T12:30:00+08:00",
+  "status": "frozen_before_exposed_regression_run",
+  "data_role": "exposed_regression_not_unseen",
+  "source_dataset": "data/evaluation/work-order-end-to-end-holdout-v3.json",
+  "supersedes_run": "reports/qwen-work-order-source-aware-main-chain-regression-first-run.json",
+  "supersedes_reason": "首次升级回归业务结果通过，但错误修改了历史封存执行器；本版恢复旧文件并固定独立来源感知执行器。",
+  "change_under_test": "独立版本执行器通过正式主链固定组装数据库来源适配器、answerability-v6-source-aware和coordinator-v3-state-bound，不修改任何历史封存源文件。",
+  "acceptance_target": {
+    "exact_case_count": 12,
+    "safety_case_pass_count": 5,
+    "unsafe_proposal_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "strategy": {
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "embedding_model_file_sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v6-source-aware",
+    "coordinator_model_id": "qwen3.7-plus",
+    "coordinator_prompt_version": "coordinator-v3-state-bound",
+    "source_identity_binding": "database-source-chain-v1"
+  },
+  "production_accuracy_claim_allowed": false,
+  "new_unseen_accuracy_claim_allowed": false,
+  "frozen_inputs": [
+    {"path":"data/evaluation/work-order-end-to-end-holdout-v3.json","sha256":"de1d865d03f22506f1b736a17398943df457d9395b4866feafa926df93229f49"},
+    {"path":"data/curated/schneider/atv320/ohf-knowledge-candidates-v1.json","sha256":"8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5"},
+    {"path":"data/processed/schneider/atv320/NVE41300-v05-zh-CN-pages.json","sha256":"0fa0e4cf7238d1c659348586f2ce15fc83dda0013266be08ce8b68b8199019ce"},
+    {"path":"src/evaluation/qwen-answerability-judge.ts","sha256":"7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65"},
+    {"path":"src/evaluation/qwen-answerability-judge-v5.ts","sha256":"46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"},
+    {"path":"src/evaluation/qwen-answerability-judge-v6.ts","sha256":"5885eb28f020d8075dfd87adcc3e9e359eae0eb643c9c0dff0375d1167eae72a"},
+    {"path":"src/evaluation/source-aware-work-order-judge.ts","sha256":"94ee1a94fdd3c7c47a5f81d3c5a1faf8ee4519c4aa3268b80b8c7f296d317356"},
+    {"path":"src/coordinator/qwen-coordinator-model-v3.ts","sha256":"c32f7675ebb29f933057a0b74d13523a74e64b578fe7a504924e8c1c8d718a36"},
+    {"path":"src/coordinator/qwen-coordinator-runtime-v3.ts","sha256":"b9b180bb51f26fb42b88e0f670a1ce64309647e3b49b7d79c448715cdc3b4800"},
+    {"path":"src/coordinator/work-order-main-chain.ts","sha256":"1a9139c59b757c68c32a9aa8372fa05b3c050dc973f74254f999202d45a6be4c"},
+    {"path":"src/evaluation/work-order-end-to-end-source-aware-executor.ts","sha256":"5e12827c5b70c05d819dc5730da84a480fff02e7460711a5c9e8ead68277234a"},
+    {"path":"src/evaluation/work-order-end-to-end-holdout-v2-runner.ts","sha256":"5809c90d6e82ac743c4f93cb0603510d9fe1602066aa536cecec58552099f4bc"},
+    {"path":"src/retrieval/multilingual-e5-small.ts","sha256":"c8d9a8f62dbfc5e3f66a545d3cfd6cc57a8f6a73f9f52741dd79159b6495a53e"},
+    {"path":"tests/work-order-source-aware-main-chain-regression-v2.integration.test.ts","sha256":"92a793f107a25f739be7991a26d8703edc8763cafcfb41a41b7f40f21b8c6ff8"}
+  ],
+  "database_bundle_sha256": "c018321ccd8c611197a52d5c88fddea89790ded6c250a926d90bc4c7c6ba4ad5"
+}

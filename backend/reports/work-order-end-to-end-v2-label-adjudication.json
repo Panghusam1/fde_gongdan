@@ -1,0 +1,83 @@
+{
+  "record_version": 1,
+  "adjudicated_at": "2026-08-19",
+  "source_dataset": "data/evaluation/work-order-end-to-end-holdout-v2.json",
+  "source_first_run_report": "reports/qwen-work-order-end-to-end-holdout-v2-first-run.json",
+  "historical_dataset_modified": false,
+  "historical_result_modified": false,
+  "adjudication_authority": "project_evaluation_review_not_domain_engineer_approval",
+  "manufacturer_source": {
+    "publisher": "Schneider Electric",
+    "document_reference": "NVE41300",
+    "version": "05",
+    "language": "zh-CN",
+    "local_pdf_sha256": "a6a033d439ab3340bde3d062979aba8bd6014762d12e2fb39aafe34aef000e57",
+    "relevant_pages": [
+      {
+        "pdf_page_number": 395,
+        "excerpt": "解决措施 检查电机负载、变频器通风情况和环境温度。"
+      },
+      {
+        "pdf_page_number": 404,
+        "excerpt": "注: 风机运行状况与变频器热状态相关。 变频器运行时风扇可能不运行。"
+      }
+    ],
+    "authority_scope": "厂家一手资料可证明该产品手册写了什么；不能自动证明项目自定的低风险等级，也不能代替变频器工程师批准现场操作。"
+  },
+  "cases": [
+    {
+      "case_id": "E203",
+      "original_expected_verdicts": ["directly_answerable"],
+      "first_run_actual_verdicts": ["partially_related"],
+      "problem_kind": "unsupported_constraint",
+      "problem": "问题加入“不要求打开设备”，厂家原文只列出检查电机负载、通风和环境温度，没有说明这些检查均无需打开设备。",
+      "adjudicated_measurement": "原标签不能作为直接回答金标准；判断器拒绝生成方案属于安全行为。",
+      "future_rewrite": "OHF故障检修表列出了哪些检查项目？"
+    },
+    {
+      "case_id": "E204",
+      "original_expected_verdicts": ["directly_answerable", "directly_answerable"],
+      "first_run_actual_verdicts": ["partially_related"],
+      "problem_kind": "unsupported_sequence",
+      "problem": "第一问加入“先核查”的先后顺序，厂家原文列出检查项但没有规定它们是第一步。第一问被阻断后，第二问按流程没有执行。",
+      "adjudicated_measurement": "原第一问标签不严谨，不能把整条失败归因于协调助手。",
+      "future_rewrite": "OHF故障检修表是否要求检查变频器通风情况？"
+    },
+    {
+      "case_id": "E206",
+      "original_expected_verdicts": ["directly_answerable", "directly_answerable"],
+      "first_run_actual_verdicts": ["partially_related"],
+      "problem_kind": "task_measurement_mismatch",
+      "problem": "第一句是操作指令“按照条目检查”，不是要求从资料中提取事实的问题；数据却让判断器测量资料能否回答问题。",
+      "adjudicated_measurement": "题目形式与判断任务不一致，首轮结果不能用于估计该分支准确率。",
+      "future_rewrite": "OHF故障检修条目要求检查通风和环境温度吗？"
+    },
+    {
+      "case_id": "E207",
+      "original_expected_verdicts": ["directly_answerable", "directly_answerable"],
+      "first_run_actual_verdicts": ["partially_related"],
+      "problem_kind": "task_measurement_mismatch",
+      "problem": "第一句同样是操作指令而非清楚的信息问题；第一问被阻断后，关于风扇的第二问没有执行。",
+      "adjudicated_measurement": "不能把未执行的第二问记成模型分类错误，也不能在历史报告里补跑。",
+      "future_rewrite": "厂家OHF故障检修条目列出的检查对象有哪些？"
+    }
+  ],
+  "decision": {
+    "reuse_for_prompt_tuning": true,
+    "reuse_as_unseen_test": false,
+    "include_in_new_unseen_accuracy_denominator": false,
+    "next_action": "新建未运行过且问题形式清楚的端到端数据；标准答案只包含厂家原文直接支持的事实。"
+  },
+  "method_references": [
+    {
+      "publisher": "NIST",
+      "url": "https://airc.nist.gov/airmf-resources/airmf/5-sec-core/",
+      "reason": "要求记录测试集、指标、工具细节以及数据选择和适用性。"
+    },
+    {
+      "publisher": "Google for Developers",
+      "url": "https://developers.google.com/machine-learning/guides/rules-of-ml/",
+      "reason": "建议独立测试基础设施，并用后续新数据评价系统，而不是把已暴露回归当成新测试。"
+    }
+  ]
+}

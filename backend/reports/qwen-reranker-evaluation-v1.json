@@ -1,0 +1,590 @@
+{
+  "reportVersion": 1,
+  "generatedAt": "2026-08-19T04:30:10.119Z",
+  "status": "historical_authorization_failure_before_product_scope_guard",
+  "statusNote": "原始失败调用留档；请求在模型计算前被Token Plan与业务空间授权边界拒绝。当前40题题库随后加入product_family_code并更换SHA，本文件不能作为当前模型效果报告。",
+  "dataset": {
+    "id": "ohf-retrieval-cases-v2-40",
+    "sha256": "953de7547fa0396cd5286eb0e9c769cbf18acb14145f692805d08e354e169f90"
+  },
+  "candidateManifestSha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5",
+  "candidateSource": "E5 vector top 3 from ohf-retrieval-evaluation-v2",
+  "thresholds": {
+    "validOutputRate": 1,
+    "answerableHitAt1": 0.9
+  },
+  "evaluation": {
+    "modelId": "qwen3-rerank",
+    "caseCount": 40,
+    "answerableCaseCount": 30,
+    "validOutputRate": 0,
+    "answerableHitAt1": 0,
+    "answerableHitAt3": 0,
+    "answerableMeanReciprocalRank": 0,
+    "averageLatencyMilliseconds": 30.127110000000005,
+    "p95LatencyMilliseconds": 39.620799999999974,
+    "cases": [
+      {
+        "caseId": "Q01",
+        "expectedId": "ohf-fault-definition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 114.06209999999999,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q02",
+        "expectedId": "ohf-fault-definition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 40.18869999999998,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q03",
+        "expectedId": "ohf-fault-definition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 22.588899999999995,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q04",
+        "expectedId": "ohf-fault-definition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 34.828,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q05",
+        "expectedId": "ohf-fault-definition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-thermal-threshold",
+          "ohf-manual-reset-condition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 31.961100000000044,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q06",
+        "expectedId": "ohf-thermal-threshold",
+        "candidateIds": [
+          "ohf-thermal-threshold",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 24.756400000000042,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q07",
+        "expectedId": "ohf-thermal-threshold",
+        "candidateIds": [
+          "ohf-thermal-threshold",
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 39.620799999999974,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q08",
+        "expectedId": "ohf-thermal-threshold",
+        "candidateIds": [
+          "ohf-thermal-threshold",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 24.56759999999997,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q09",
+        "expectedId": "ohf-thermal-threshold",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 19.34020000000004,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q10",
+        "expectedId": "ohf-thermal-threshold",
+        "candidateIds": [
+          "ohf-thermal-threshold",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 25.323199999999986,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q11",
+        "expectedId": "ohf-manual-reset-condition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 25.560099999999977,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q12",
+        "expectedId": "ohf-manual-reset-condition",
+        "candidateIds": [
+          "ohf-manual-reset-condition",
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 29.32940000000002,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q13",
+        "expectedId": "ohf-manual-reset-condition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "product-restart-warning"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 23.414999999999964,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q14",
+        "expectedId": "ohf-manual-reset-condition",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "ohf-thermal-threshold"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 30.03340000000003,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q15",
+        "expectedId": "ohf-manual-reset-condition",
+        "candidateIds": [
+          "ohf-manual-reset-condition",
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 23.234000000000037,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q16",
+        "expectedId": "product-restart-warning",
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 22.337300000000027,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q17",
+        "expectedId": "product-restart-warning",
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 31.702399999999898,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q18",
+        "expectedId": "product-restart-warning",
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 26.63280000000009,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q19",
+        "expectedId": "product-restart-warning",
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 34.90790000000004,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q20",
+        "expectedId": "product-restart-warning",
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 15.690599999999904,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q21",
+        "expectedId": "ohf-error-detection-disable-danger",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 29.075900000000047,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q22",
+        "expectedId": "ohf-error-detection-disable-danger",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "product-restart-warning",
+          "ohf-fault-definition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 26.63519999999994,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q23",
+        "expectedId": "ohf-error-detection-disable-danger",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 32.8352000000001,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q24",
+        "expectedId": "ohf-error-detection-disable-danger",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 26.65820000000008,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q25",
+        "expectedId": "ohf-error-detection-disable-danger",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 23.16450000000009,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q26",
+        "expectedId": "unresettable-fault-power-isolation-procedure",
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 25.990800000000036,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q27",
+        "expectedId": "unresettable-fault-power-isolation-procedure",
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-thermal-threshold",
+          "ohf-fault-definition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 21.204700000000003,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q28",
+        "expectedId": "unresettable-fault-power-isolation-procedure",
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 25.101999999999975,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q29",
+        "expectedId": "unresettable-fault-power-isolation-procedure",
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 27.968200000000024,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q30",
+        "expectedId": "unresettable-fault-power-isolation-procedure",
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 27.98849999999993,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q31",
+        "expectedId": null,
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger",
+          "ohf-thermal-threshold"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 36.22040000000004,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q32",
+        "expectedId": null,
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 28.097499999999968,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q33",
+        "expectedId": null,
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-fault-definition",
+          "ohf-thermal-threshold"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 31.376800000000003,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q34",
+        "expectedId": null,
+        "candidateIds": [
+          "ohf-manual-reset-condition",
+          "unresettable-fault-power-isolation-procedure",
+          "product-restart-warning"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 28.33140000000003,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q35",
+        "expectedId": null,
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 29.388999999999896,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q36",
+        "expectedId": null,
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 33.688499999999976,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q37",
+        "expectedId": null,
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 31.841300000000047,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q38",
+        "expectedId": null,
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 29.211900000000014,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q39",
+        "expectedId": null,
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 31.709299999999985,
+        "error": "qwen reranker request failed with HTTP 401"
+      },
+      {
+        "caseId": "Q40",
+        "expectedId": null,
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger",
+          "product-restart-warning"
+        ],
+        "rankedIds": [],
+        "scores": [],
+        "validOutput": false,
+        "latencyMilliseconds": 18.51520000000005,
+        "error": "qwen reranker request failed with HTTP 401"
+      }
+    ]
+  },
+  "passed": false
+}

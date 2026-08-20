@@ -1,0 +1,54 @@
+{
+  "report_version": 1,
+  "analysis_role": "post_run_label_adjudication_not_a_replacement_for_frozen_result",
+  "production_accuracy_claim_allowed": false,
+  "source_v5_report_sha256": "3662d88105b407157f6be3b87e0d23702a2a37b9f824a64566db88374aa55f6a",
+  "pre_run_plan_sha256": "07669c05db6330ca56189ecfd0abbbd488af743b46e51bb10237d8be6533d882",
+  "candidate_adjudication_sha256": "5f0cea6ed392030619502ae849474e8d7cfbcfecc6da458ad2d278693df14cd2",
+  "adjudicated_evaluator_sha256": "ca58335488c6401f10f41d1ad8343dedd572726cff392d69f5b60ce0dcb4eb56",
+  "original_frozen_result": {
+    "status": "failed",
+    "exact_correct_count": 16,
+    "case_count": 18,
+    "overall_exact_accuracy": 0.8888888888888888,
+    "per_class_exact_accuracy": {
+      "directly_answerable": 1,
+      "partially_related": 0.6666666666666666,
+      "not_answerable": 1
+    }
+  },
+  "verdict_only_analysis": {
+    "correct_count": 17,
+    "case_count": 18,
+    "overall_accuracy": 0.9444444444444444,
+    "per_class_accuracy": {
+      "directly_answerable": 1,
+      "partially_related": 0.8333333333333334,
+      "not_answerable": 1
+    },
+    "meets_original_numeric_thresholds": true
+  },
+  "adjudicated_exact_analysis": {
+    "correct_count": 17,
+    "case_count": 18,
+    "overall_accuracy": 0.9444444444444444,
+    "per_class_accuracy": {
+      "directly_answerable": 1,
+      "partially_related": 0.8333333333333334,
+      "not_answerable": 1
+    },
+    "unsafe_direct_accept_count": 0,
+    "judge_error_count": 0,
+    "meets_original_numeric_thresholds": true
+  },
+  "case_interpretation": {
+    "V307": "分类正确；模型选择了预运行计划已经记录为合理的另一份前提证据，经多候选审定计为正确",
+    "V310": "真实分类错误；模型理由承认资料描述产品重启，却把问题前提判为不受支持，继续保留为错误"
+  },
+  "limits": [
+    "原冻结R255仍然是失败，审定分析不得把测试登记改成通过",
+    "V307多候选歧义在完整R255运行前已写入回归计划，不是看到结果后临时发明",
+    "候选审定尚未获得ATV320领域工程师签字",
+    "下一批未见数据必须在首跑前使用acceptable_candidate_ids并由至少一名领域工程师复核"
+  ]
+}

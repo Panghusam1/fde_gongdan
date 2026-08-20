@@ -1,0 +1,74 @@
+{
+  "record_version": 1,
+  "created_at": "2026-08-20T12:32:13.1527588+08:00",
+  "status": "frozen_before_first_model_run",
+  "dataset_role": "project_authored_unseen_not_production_data",
+  "first_model_run_completed": false,
+  "dataset": "data/evaluation/source-identity-unseen-v4.json",
+  "trigger_failure": {
+    "report": "reports/qwen-source-identity-unseen-v3-first-run.json",
+    "exact_case_count": 11,
+    "forged_source_accept_count": 1,
+    "failed_cases": ["C606"]
+  },
+  "root_cause_evidence": {
+    "prompt_only_source_identity_failed_across_three_unseen_sets": true,
+    "conclusion": "资料身份属于权限式业务约束，不能继续交给模型从自由文本中解释"
+  },
+  "single_architecture_change": "原始问题只绑定检索记录且不进入内容模型；人工确认的内容问题与资料编号、版本、语言分字段传入；数据库先精确过滤候选，无匹配时程序拒绝，有匹配时仅将匹配候选交给第八版内容判断器。",
+  "database_index_decision": {
+    "new_index_added": false,
+    "reason": "每次最多五个候选，查询先按knowledge_search_hits主键集合定位，再经已有主键和外键连接后比较三个来源字段；当前访问路径不需要新增复合索引。"
+  },
+  "controlled_preflight": {
+    "tests": ["R312", "R313", "R314", "R315", "R316", "R317", "R318"],
+    "status": "passed",
+    "case_count": 12,
+    "exact_case_count": 12,
+    "program_reject_case_count": 5,
+    "content_model_call_count": 7,
+    "unmatched_source_accept_count": 0,
+    "meaning": "受控模型结果不计入真实模型成绩"
+  },
+  "acceptance_target": {
+    "exact_case_count_minimum": 11,
+    "unmatched_source_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "strategy": {
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v8-candidate-isolated",
+    "main_chain_source_identity_binding": "database-source-chain-v1",
+    "source_constraint": "confirmed-source-exact-v1",
+    "raw_question_forwarding": "forbidden",
+    "temperature": 0
+  },
+  "production_accuracy_claim_allowed": false,
+  "repair_before_first_run_allowed": false,
+  "first_run_report": "reports/qwen-source-identity-unseen-v4-first-run.json",
+  "frozen_inputs": [
+    {"path":"data/evaluation/source-identity-unseen-v4.json","sha256":"d4dcaa36662717fbcc2e79a5d30801cd49f62d8b0e580e9cf904e2c94eec1d61"},
+    {"path":"src/evaluation/source-identity-unseen-v4-dataset.ts","sha256":"10116fdceec1b8f4b1a21eaaaa05a7c7853c142984dc89a5a9de064744347cdc"},
+    {"path":"src/evaluation/source-identity-unseen-executor-v4.ts","sha256":"625fbf8bd94beff839e19e0fa1f5e41d50d780ec877d2f9c10c88d47b52e6f40"},
+    {"path":"src/evaluation/confirmed-source-work-order-judge.ts","sha256":"5e65f3bbf560e3d01124f64b8e34d8b2870a79eac1e0487867384eec87fe1de5"},
+    {"path":"src/evaluation/qwen-answerability-judge-v8.ts","sha256":"6f10c1b32e17ec5d55cb3cb4e99ba8eae8b30e8c67000ebdfe885200475dc3a4"},
+    {"path":"src/evaluation/qwen-answerability-judge-v7.ts","sha256":"b4776aa1146fdd851443bf1de99f8e12717d5be20bf17e67c2bb10aab093dac1"},
+    {"path":"src/evaluation/qwen-answerability-judge-v6.ts","sha256":"5885eb28f020d8075dfd87adcc3e9e359eae0eb643c9c0dff0375d1167eae72a"},
+    {"path":"src/evaluation/qwen-answerability-judge-v5.ts","sha256":"46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"},
+    {"path":"src/evaluation/qwen-answerability-judge.ts","sha256":"7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65"},
+    {"path":"src/evaluation/source-aware-work-order-judge.ts","sha256":"94ee1a94fdd3c7c47a5f81d3c5a1faf8ee4519c4aa3268b80b8c7f296d317356"},
+    {"path":"src/coordinator/work-order-main-chain-v4.ts","sha256":"888f44a805fe551eb5583e93abbbbf1273de751f72f9748d74c6af0b168de6f7"},
+    {"path":"tests/confirmed-source-work-order-judge.test.ts","sha256":"7204856be33539c6af60a194edaf2313aae69a5aacb50867405d3cff6e005bae"},
+    {"path":"tests/work-order-main-chain-v4.test.ts","sha256":"a0533a99c198ad5439f152581af0c1802cddd23915e8f975a8b2c6053510dc4c"},
+    {"path":"tests/source-identity-unseen-v4-dataset.test.ts","sha256":"69b86c29e7e307ca8f3a122a16016c9b14e3cd39b188321787d798682ad474d0"},
+    {"path":"tests/source-identity-unseen-executor-v4.test.ts","sha256":"966ee3a7e3b21689d77a9b7b88154f6fb28a384d2974a2887ee1b66dd44519bd"},
+    {"path":"tests/source-identity-unseen-v4-prerun.test.ts","sha256":"a8f0c2703efa669f4785c6ead063ffd55b50ef145ebcb4354cacb1d3cb0eb84e"},
+    {"path":"tests/source-identity-unseen-v4-real.integration.test.ts","sha256":"efc2588671dddc7bdda0ef5d7d1c396dce09b7d9fb2c06a28cb87be7a03028c5"}
+  ],
+  "interpretation_limits": [
+    "第四批为项目自建未见题，不等于真实工厂数据",
+    "第四版已见前三批失败结论，但未见第四批问题",
+    "程序来源过滤降低错误来源风险，也可能在正确来源未召回时增加拒答",
+    "第一次真实运行无论成败都必须保留，不得覆盖"
+  ]
+}

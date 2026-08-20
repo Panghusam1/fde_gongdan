@@ -1,0 +1,919 @@
+{
+  "reportVersion": 1,
+  "generatedAt": "2026-08-19T04:54:16.922Z",
+  "evaluationOnly": true,
+  "knowledgeReviewStatus": "unreviewed",
+  "dataset": {
+    "id": "ohf-answerability-holdout-v1",
+    "sha256": "0d3b8db4a65c00da728afaaaee8270ac3e2ffb23df68993b8ad89745eb4f6894",
+    "frozenBeforeFirstModelRun": true
+  },
+  "preRunRecordSha256": "817e0beafe69f342db4bf0041f9b7631325ef602658c4d87b432a47d0e5e2bbe",
+  "developmentDatasetSha256": "7efc872e883733bc41bb9f155787ddc33c15bdf726099400b359823897e73005",
+  "candidateManifestSha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5",
+  "thresholdPolicy": {
+    "policy_id": "e5-small-answerability-candidate-v1",
+    "derived_from_dataset_id": "ohf-retrieval-cases-v2-40",
+    "vector_similarity_minimum": 0.86,
+    "comparison": "greater_than_or_equal",
+    "frozen_before_holdout_run": true
+  },
+  "acceptanceTargets": {
+    "answerable_correct_accept_rate_minimum": 0.75,
+    "unanswerable_abstain_accuracy_minimum": 1,
+    "accepted_precision_minimum": 0.9
+  },
+  "model": {
+    "id": "Xenova/multilingual-e5-small",
+    "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "dimensions": 384,
+    "poolingMethod": "mean",
+    "normalized": true,
+    "officialSha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+    "localSha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193"
+  },
+  "elapsedMilliseconds": 172.05639999999994,
+  "evaluation": {
+    "threshold": 0.86,
+    "caseCount": 24,
+    "answerableCaseCount": 12,
+    "unanswerableCaseCount": 12,
+    "answerableCorrectAcceptRate": 0.9166666666666666,
+    "answerableCoverage": 0.9166666666666666,
+    "unanswerableAbstainAccuracy": 0.8333333333333334,
+    "acceptedPrecision": 0.8461538461538461,
+    "overallDecisionAccuracy": 0.875,
+    "cases": [
+      {
+        "caseId": "H01",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-fault-definition",
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.9151152969365985,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "设备面板显示OHF时，这个故障代码表示哪一类异常？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.9151152969365985
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8877412620999545
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8864736195459089
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.872511481223672
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8682359152203121
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8667435550422726
+          }
+        ]
+      },
+      {
+        "caseId": "H02",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-fault-definition",
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.8974363513900552,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "代码OHF对应的是驱动器的哪种状态问题？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8974363513900552
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.892695828026579
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8798321060621649
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8746005308082228
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8597276913859666
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8546799164352445
+          }
+        ]
+      },
+      {
+        "caseId": "H03",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-thermal-threshold",
+        "topCandidateId": "ohf-thermal-threshold",
+        "topScore": 0.908868718257501,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "热状态百分比达到哪个值会触发OHF阈值？",
+        "ranking": [
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.908868718257501
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8831133148272879
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8654082545907097
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8501491365762941
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.830890912012772
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8218074695610623
+          }
+        ]
+      },
+      {
+        "caseId": "H04",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-thermal-threshold",
+        "topCandidateId": "ohf-thermal-threshold",
+        "topScore": 0.9025169248312621,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "额定热状态是100%，再升到多少会到过载报警点？",
+        "ranking": [
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.9025169248312621
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8748078032628345
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8589717695910636
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8575028874800132
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8514408522309732
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8475016360436095
+          }
+        ]
+      },
+      {
+        "caseId": "H05",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-manual-reset-condition",
+        "topCandidateId": "ohf-manual-reset-condition",
+        "topScore": 0.8911069872504522,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "故障原因消除后，怎样用分配的输入手动清除OHF？",
+        "ranking": [
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8911069872504522
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8812440332677072
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.869188513776864
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8585490069685209
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8546953606630783
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8415977865185734
+          }
+        ]
+      },
+      {
+        "caseId": "H06",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-manual-reset-condition",
+        "topCandidateId": "ohf-manual-reset-condition",
+        "topScore": 0.8899042405013711,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "OHF是否属于原因消失以后可以人工复位的故障？",
+        "ranking": [
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8899042405013711
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8857202501423215
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.86285131919974
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8565785438688243
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8500762378610813
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8487039406180866
+          }
+        ]
+      },
+      {
+        "caseId": "H07",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "product-restart-warning",
+        "topCandidateId": "product-restart-warning",
+        "topScore": 0.8972246688885726,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "驱动器的重启功能为什么可能引起设备意外动作？",
+        "ranking": [
+          {
+            "id": "product-restart-warning",
+            "score": 0.8972246688885726
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8599515057059819
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8538484445361026
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8525843809819377
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8491632045258581
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8223005948938226
+          }
+        ]
+      },
+      {
+        "caseId": "H08",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "product-restart-warning",
+        "topCandidateId": "product-restart-warning",
+        "topScore": 0.8972408795892712,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "激活产品重启以前，需要先确认哪项安全条件？",
+        "ranking": [
+          {
+            "id": "product-restart-warning",
+            "score": 0.8972408795892712
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8569997066171746
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8484450758862785
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8423818408229601
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8414853385816614
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8295607873503332
+          }
+        ]
+      },
+      {
+        "caseId": "H09",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-error-detection-disable-danger",
+        "topCandidateId": "ohf-error-detection-disable-danger",
+        "topScore": 0.8789913592491148,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "停用错误检测以后，为什么必须安排替代监控？",
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8789913592491148
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.866756681915178
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8646200990092712
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8575659095965587
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8518601348284953
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8242423218820616
+          }
+        ]
+      },
+      {
+        "caseId": "H10",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "ohf-error-detection-disable-danger",
+        "topCandidateId": "ohf-error-detection-disable-danger",
+        "topScore": 0.8904830433714046,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "错误检测功能关闭后，调试和测试有哪些强制要求？",
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8904830433714046
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.871480139557226
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8707166181157341
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8693067402410208
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8647553360925744
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8549515415580009
+          }
+        ]
+      },
+      {
+        "caseId": "H11",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "unresettable-fault-power-isolation-procedure",
+        "topCandidateId": "ohf-error-detection-disable-danger",
+        "topScore": 0.8587726101889834,
+        "abstained": true,
+        "outcome": "false_abstain",
+        "query": "不可复位故障时，测量PA/+和PC/-之前要做哪些隔离和等待动作？",
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8587726101889834
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8575496645467267
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8567050654095941
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8542031837491907
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8487146806294826
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8360978764301954
+          }
+        ]
+      },
+      {
+        "caseId": "H12",
+        "expectedBehavior": "hit",
+        "expectedCandidateId": "unresettable-fault-power-isolation-procedure",
+        "topCandidateId": "unresettable-fault-power-isolation-procedure",
+        "topScore": 0.8736414953606296,
+        "abstained": false,
+        "outcome": "correct_accept",
+        "query": "直流母线降到多少伏以下才算完成放电检查？",
+        "ranking": [
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8736414953606296
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8549917043719054
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8510640650999738
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.837004414609489
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.821546659716268
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8128942285043405
+          }
+        ]
+      },
+      {
+        "caseId": "H13",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.8316074684294792,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "ATV320现在的采购价格和交货周期是多少？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8316074684294792
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8236125287102145
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8152114410103122
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8095850050205381
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8038511024245479
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8030243830790225
+          }
+        ]
+      },
+      {
+        "caseId": "H14",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-thermal-threshold",
+        "topScore": 0.8685827656281726,
+        "abstained": false,
+        "outcome": "false_accept",
+        "query": "这台变频器保修几年，应该怎样申请售后？",
+        "ranking": [
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8685827656281726
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8568044424947722
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8502721468344965
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8433170955905125
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8364076971625323
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8342667760697333
+          }
+        ]
+      },
+      {
+        "caseId": "H15",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.8565928153037083,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "设备铭牌上的序列号应该登记到哪个系统？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8565928153037083
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8473488024733313
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8446037601181476
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8336912990294918
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8294814440115773
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8275767742598517
+          }
+        ]
+      },
+      {
+        "caseId": "H16",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.8426275549115609,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "怎么配置Modbus通信地址和波特率？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8426275549115609
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8289563803566181
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8270841373313919
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8257573404847184
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8146333095186646
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8068532021705994
+          }
+        ]
+      },
+      {
+        "caseId": "H17",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "unresettable-fault-power-isolation-procedure",
+        "topScore": 0.8379968033108476,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "电机自整定参数应该怎样设置？",
+        "ranking": [
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8379968033108476
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8349372135843955
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8315482842503401
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8303333683291461
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8278425975611089
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8181224507551772
+          }
+        ]
+      },
+      {
+        "caseId": "H18",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.846041882862833,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "模拟量输入AI1应该接电压信号还是电流信号？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.846041882862833
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8409819820342881
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.840158106019679
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8331776100250468
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8272201656211382
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8239322470162408
+          }
+        ]
+      },
+      {
+        "caseId": "H19",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.8653180141056683,
+        "abstained": false,
+        "outcome": "false_accept",
+        "query": "更换散热风扇要购买哪个备件编号？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8653180141056683
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8461310956699539
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8432597300254668
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8395256666978009
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8390187666014582
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8311693402830527
+          }
+        ]
+      },
+      {
+        "caseId": "H20",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.8315252404083304,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "设备外形尺寸和安装孔距是多少？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8315252404083304
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8270091527244648
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8265898688056676
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8244143339048784
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8233984100417331
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8187761619649121
+          }
+        ]
+      },
+      {
+        "caseId": "H21",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-thermal-threshold",
+        "topScore": 0.8487737348153532,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "怎样设置最高输出频率？",
+        "ranking": [
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8487737348153532
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8418660944428713
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8401346052801777
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8376367875597467
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.834949031357763
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8293175664190207
+          }
+        ]
+      },
+      {
+        "caseId": "H22",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-fault-definition",
+        "topScore": 0.8554914288497565,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "这款设备支持哪些以太网通信模块？",
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8554914288497565
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8494169684590662
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8491948642621172
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8447957727182293
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8351247896576799
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8250850053106823
+          }
+        ]
+      },
+      {
+        "caseId": "H23",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-error-detection-disable-danger",
+        "topScore": 0.8531083848650584,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "怎样查看累计运行时间和用电量？",
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8531083848650584
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8444624620158276
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8426565986120248
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8421150711843691
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8413499462709393
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8250353048120697
+          }
+        ]
+      },
+      {
+        "caseId": "H24",
+        "expectedBehavior": "abstain",
+        "expectedCandidateId": null,
+        "topCandidateId": "ohf-error-detection-disable-danger",
+        "topScore": 0.8281788975752171,
+        "abstained": true,
+        "outcome": "correct_abstain",
+        "query": "能不能在海拔3000米的现场直接使用？",
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8281788975752171
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8246267617119022
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8139190949192241
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8074512850535147
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8046690795655186
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8022392620506755
+          }
+        ]
+      }
+    ]
+  },
+  "gates": {
+    "answerableCorrectAcceptRate": true,
+    "unanswerableAbstainAccuracy": false,
+    "acceptedPrecision": false
+  },
+  "passed": false
+}

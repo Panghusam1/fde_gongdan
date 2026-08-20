@@ -1,0 +1,52 @@
+{
+  "record_version": 1,
+  "created_at": "2026-08-20T11:54:39.4824053+08:00",
+  "status": "frozen_before_first_model_run",
+  "dataset_role": "project_authored_unseen_not_production_data",
+  "first_model_run_completed": false,
+  "dataset": "data/evaluation/source-identity-unseen-v1.json",
+  "hypothesis": "正式第六版主链收到数据库来源编号、版本和语言后，应联合核对来源身份与正文；来源不匹配时即使正文完全相同也不得放行。",
+  "controlled_preflight": {
+    "test_id": "R295",
+    "status": "passed",
+    "case_count": 12,
+    "exact_case_count": 12,
+    "forged_source_accept_count": 0,
+    "meaning": "只证明数据库来源适配和评分执行器连通，不计入真实模型成绩"
+  },
+  "acceptance_target": {
+    "exact_case_count_minimum": 11,
+    "forged_source_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "strategy": {
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v6-source-aware",
+    "main_chain_source_identity_binding": "database-source-chain-v1",
+    "orchestration_scope": "formal_main_chain_answerability_gate_only",
+    "temperature": 0
+  },
+  "production_accuracy_claim_allowed": false,
+  "repair_before_first_run_allowed": false,
+  "first_run_report": "reports/qwen-source-identity-unseen-v1-first-run.json",
+  "frozen_inputs": [
+    {"path":"data/evaluation/source-identity-unseen-v1.json","sha256":"0ced6095f9439ff089ec386905f99248b6079434ebb2c1cb9bcf623f525eb41b"},
+    {"path":"src/evaluation/source-identity-unseen-dataset.ts","sha256":"d1e2278bf6ee41ad1bc60940f82790050530b6d128e7f1475dee9d3cdfc45027"},
+    {"path":"src/evaluation/source-identity-unseen-executor.ts","sha256":"c3f39a3bd89a5dc0da6b6a8fd6063e8fefc0f290f1b4afb6555f4b8da35bbdea"},
+    {"path":"src/evaluation/source-aware-work-order-judge.ts","sha256":"94ee1a94fdd3c7c47a5f81d3c5a1faf8ee4519c4aa3268b80b8c7f296d317356"},
+    {"path":"src/evaluation/qwen-answerability-judge.ts","sha256":"7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65"},
+    {"path":"src/evaluation/qwen-answerability-judge-v5.ts","sha256":"46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"},
+    {"path":"src/evaluation/qwen-answerability-judge-v6.ts","sha256":"5885eb28f020d8075dfd87adcc3e9e359eae0eb643c9c0dff0375d1167eae72a"},
+    {"path":"src/coordinator/work-order-main-chain.ts","sha256":"1a9139c59b757c68c32a9aa8372fa05b3c050dc973f74254f999202d45a6be4c"},
+    {"path":"tests/source-identity-unseen-dataset.test.ts","sha256":"066f70204b1b6db7b8c67fbaf95bb22d7f07a0b6c3df75ec924c97aa0ba5c7d9"},
+    {"path":"tests/source-identity-unseen-executor.test.ts","sha256":"bd8eef8d04c40fbdc5501b3f37e01f037899ed37fe277453f1a5cd4a8c9c4cb4"},
+    {"path":"tests/source-identity-unseen-prerun.test.ts","sha256":"48aa1510e8dd35f3c5e80cab2533e78196dab66500d3b9fc1a45b234569bae78"},
+    {"path":"tests/source-identity-unseen-real.integration.test.ts","sha256":"2bb578e429d21999260135540567f92b1390c765226d3f4bc49800fde5579633"}
+  ],
+  "interpretation_limits": [
+    "项目自建未见题不等于真实工厂数据",
+    "非标准来源身份组合仅为评测控制变量，不声称存在对应厂家文件",
+    "本轮只测答案存在性关口，不重复证明检索、协调和工单终态",
+    "第一次真实运行无论成败都必须保留，不得覆盖"
+  ]
+}

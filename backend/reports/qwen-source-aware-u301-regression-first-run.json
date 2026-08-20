@@ -1,0 +1,18 @@
+{
+  "regression_run_at": "2026-08-19T11:33:52.185Z",
+  "elapsed_milliseconds": 4900.5214,
+  "data_role": "exposed_regression_not_unseen",
+  "target_case_id": "U301",
+  "source_first_run_report_sha256": "09fe158d945df6660d16c4191eae41ca225dc547b452b026752528323442a7c1",
+  "pre_run_record_sha256": "04e5115c063e1d78fb4782ca1aa000fb6723689ebf466ec30724f8e11257f64c",
+  "model_id": "qwen3.7-plus",
+  "prompt_version": "answerability-v6-source-aware",
+  "actual_evidence_verdict": "directly_answerable",
+  "actual_source_page_number": 395,
+  "actual_supporting_quote": "解决措施 检查电机负载、变频器通风情况和环境温度。",
+  "actual_risk_decision": "proposal_allowed",
+  "actual_final_state": {
+    "handoffs": 0,
+    "proposals": 0
+  }
+}

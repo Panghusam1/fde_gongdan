@@ -1,0 +1,1004 @@
+{
+  "reportVersion": 1,
+  "generatedAt": "2026-08-19T10:37:04.699Z",
+  "evaluationOnly": true,
+  "datasetRole": "project_authored_unseen_holdout_first_run",
+  "productionAccuracyClaimAllowed": false,
+  "candidateLimit": 5,
+  "elapsedMilliseconds": 68112.49220000001,
+  "dataset": {
+    "id": "ohf-answerability-holdout-v4",
+    "sha256": "af3134e33180960cfd00603619b9567900368fd6811973013a7814476bf6cbf6"
+  },
+  "candidateManifestSha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5",
+  "preRunRecordSha256": "b0bb5f6a9ec2d9c6466eba6bb1ff9b000dd413c0d67a5f402ab14162e270d22e",
+  "judgeImplementationSha256": "46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7",
+  "evaluatorSha256": "ca58335488c6401f10f41d1ad8343dedd572726cff392d69f5b60ce0dcb4eb56",
+  "runnerSha256": "cba9ba0b7b54c35cef39eb3ffe11a0cc958d7d88b056eee2b21d7fd3caf0ebbc",
+  "rankingModel": {
+    "kind": "multilingual_e5_small",
+    "modelId": "Xenova/multilingual-e5-small",
+    "modelRevision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "dimensions": 384,
+    "normalized": true,
+    "modelFileSha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193"
+  },
+  "judge": {
+    "modelId": "qwen3.7-plus",
+    "promptVersion": "answerability-v5-two-stage"
+  },
+  "acceptanceTargets": {
+    "overall_verdict_accuracy_minimum": 0.9444444444444444,
+    "per_class_verdict_accuracy_minimum": 0.8333333333333334,
+    "overall_adjudicated_exact_accuracy_minimum": 0.9444444444444444,
+    "per_class_adjudicated_exact_accuracy_minimum": 0.8333333333333334,
+    "unsafe_direct_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "evaluation": {
+    "caseCount": 18,
+    "verdictCorrectCount": 17,
+    "overallVerdictAccuracy": 0.9444444444444444,
+    "adjudicatedExactCorrectCount": 17,
+    "overallAdjudicatedExactAccuracy": 0.9444444444444444,
+    "perClassVerdictAccuracy": {
+      "directly_answerable": 0.8333333333333334,
+      "partially_related": 1,
+      "not_answerable": 1
+    },
+    "perClassAdjudicatedExactAccuracy": {
+      "directly_answerable": 0.8333333333333334,
+      "partially_related": 1,
+      "not_answerable": 1
+    },
+    "unsafeDirectAcceptCount": 0,
+    "judgeErrorCount": 0,
+    "cases": [
+      {
+        "caseId": "V401",
+        "expectedVerdict": "directly_answerable",
+        "originalExpectedCandidateId": "ohf-fault-definition",
+        "acceptableCandidateIds": [
+          "ohf-fault-definition"
+        ],
+        "actualVerdict": "directly_answerable",
+        "actualCandidateId": "ohf-fault-definition",
+        "outcome": "adjudicated_correct",
+        "query": "错误代码表里，方括号中的‘设备过热’对应哪个三字母代码？",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition",
+          "product-restart-warning",
+          "ohf-thermal-threshold"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.9077185003548044
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8810723992641982
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8736514677570353
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8626625570594505
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8618475830850676
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8555053124372428
+          }
+        ],
+        "decision": {
+          "verdict": "directly_answerable",
+          "candidateId": "ohf-fault-definition",
+          "sourcePageNumber": 72,
+          "supportingQuote": "• [设备过热] OHF: 设备过热",
+          "reason": "该资料直接展示了方括号中的‘设备过热’与三字母代码‘OHF’的对应关系，完整回答了问题。"
+        }
+      },
+      {
+        "caseId": "V402",
+        "expectedVerdict": "directly_answerable",
+        "originalExpectedCandidateId": "ohf-thermal-threshold",
+        "acceptableCandidateIds": [
+          "ohf-thermal-threshold"
+        ],
+        "actualVerdict": "directly_answerable",
+        "actualCandidateId": "ohf-thermal-threshold",
+        "outcome": "adjudicated_correct",
+        "query": "手册把变频器100%的热状态定义成什么状态？",
+        "candidateIds": [
+          "ohf-thermal-threshold",
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.934532167293422
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8594072681978997
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8583139567798104
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8449031896797072
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8428729156277862
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.840481003952176
+          }
+        ],
+        "decision": {
+          "verdict": "directly_answerable",
+          "candidateId": "ohf-thermal-threshold",
+          "sourcePageNumber": 50,
+          "supportingQuote": "变频器热状态。100% = 额定热状态，1 18% =“OHF”阈值（变频器过载）。",
+          "reason": "该资料直接定义了变频器100%的热状态为“额定热状态”，完整回答了问题。"
+        }
+      },
+      {
+        "caseId": "V403",
+        "expectedVerdict": "directly_answerable",
+        "originalExpectedCandidateId": "ohf-manual-reset-condition",
+        "acceptableCandidateIds": [
+          "ohf-manual-reset-condition"
+        ],
+        "actualVerdict": "directly_answerable",
+        "actualCandidateId": "ohf-manual-reset-condition",
+        "outcome": "adjudicated_correct",
+        "query": "检测到的原因消失后，分配的输入或位要变成什么值才可手动清除？",
+        "candidateIds": [
+          "ohf-manual-reset-condition",
+          "product-restart-warning",
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8951141131672153
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8643257530505895
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.862271516524875
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8598752166403317
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8596692854500274
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8283249567991435
+          }
+        ],
+        "decision": {
+          "verdict": "directly_answerable",
+          "candidateId": "ohf-manual-reset-condition",
+          "sourcePageNumber": 310,
+          "supportingQuote": "如果检测到的错误的原因已消失，则当分配的输入或位更改为 1 时，可手动清除检测到的错误。",
+          "reason": "该引文直接回答了问题，明确指出了在检测到的原因消失后，分配的输入或位需要变为值“1”才能手动清除错误。"
+        }
+      },
+      {
+        "caseId": "V404",
+        "expectedVerdict": "directly_answerable",
+        "originalExpectedCandidateId": "product-restart-warning",
+        "acceptableCandidateIds": [
+          "product-restart-warning"
+        ],
+        "actualVerdict": "not_answerable",
+        "actualCandidateId": null,
+        "outcome": "wrong_verdict",
+        "query": "产品重启除了重启驱动器以外，还会先执行哪个动作？",
+        "candidateIds": [
+          "product-restart-warning",
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "ranking": [
+          {
+            "id": "product-restart-warning",
+            "score": 0.8950736546347627
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8549836242930413
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.85159180847699
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8491957469383483
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8475204833931018
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8312119708750644
+          }
+        ],
+        "decision": {
+          "verdict": "not_answerable",
+          "candidateId": null,
+          "sourcePageNumber": null,
+          "supportingQuote": null,
+          "reason": "候选资料虽然涉及同一产品（驱动器/变频器）的重启和故障复位功能，但并未明确说明‘产品重启’在执行‘重启驱动器’这一动作之前会先执行哪个具体动作。候选仅提到‘重启’功能执行‘故障复位’并重启驱动器，未拆解出‘先执行’的独立前置动作步骤，因此前提和所求事实均不支持。"
+        }
+      },
+      {
+        "caseId": "V405",
+        "expectedVerdict": "directly_answerable",
+        "originalExpectedCandidateId": "ohf-error-detection-disable-danger",
+        "acceptableCandidateIds": [
+          "ohf-error-detection-disable-danger"
+        ],
+        "actualVerdict": "directly_answerable",
+        "actualCandidateId": "ohf-error-detection-disable-danger",
+        "outcome": "adjudicated_correct",
+        "query": "启用替代监视功能以后，手册要求对哪个对象进行调试与测试？",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition",
+          "ohf-fault-definition",
+          "product-restart-warning",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8847626168046424
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8626106458189733
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8558587612927376
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.854152862014253
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8528153409583672
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8346747349583659
+          }
+        ],
+        "decision": {
+          "verdict": "directly_answerable",
+          "candidateId": "ohf-error-detection-disable-danger",
+          "sourcePageNumber": 329,
+          "supportingQuote": "• 在启用监视功能之后，调试与测试系统。",
+          "reason": "问题询问启用替代监视功能后需要对哪个对象进行调试与测试。候选资料中明确提到“在启用监视功能之后，调试与测试系统”，直接回答了需要调试与测试的对象是“系统”。"
+        }
+      },
+      {
+        "caseId": "V406",
+        "expectedVerdict": "directly_answerable",
+        "originalExpectedCandidateId": "unresettable-fault-power-isolation-procedure",
+        "acceptableCandidateIds": [
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "actualVerdict": "directly_answerable",
+        "actualCandidateId": "unresettable-fault-power-isolation-procedure",
+        "outcome": "adjudicated_correct",
+        "query": "直流总线电容没有完全放电时，手册要求联系谁，并且禁止对变频器做哪两件事？",
+        "candidateIds": [
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition",
+          "product-restart-warning"
+        ],
+        "ranking": [
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8826597072406018
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8593068813549637
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8587187540152978
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8569492809773216
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8500225858837661
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8496321992295535
+          }
+        ],
+        "decision": {
+          "verdict": "directly_answerable",
+          "candidateId": "unresettable-fault-power-isolation-procedure",
+          "sourcePageNumber": 385,
+          "supportingQuote": "如果直流总线电容器未完全放电，请联系当地的 Schneider Electric 代表。\n不要对变频器进行修理或运行。",
+          "reason": "该引用完整回答了问题中的三个要点：1. 联系对象为“当地的 Schneider Electric 代表”；2. 禁止做的两件事是“修理”和“运行”。引用内容连续且直接对应问题要求。"
+        }
+      },
+      {
+        "caseId": "V407",
+        "expectedVerdict": "partially_related",
+        "originalExpectedCandidateId": "ohf-fault-definition",
+        "acceptableCandidateIds": [
+          "ohf-fault-definition",
+          "ohf-thermal-threshold"
+        ],
+        "actualVerdict": "partially_related",
+        "actualCandidateId": "ohf-fault-definition",
+        "outcome": "adjudicated_correct",
+        "query": "OHF与设备过热或热状态有关，那么操作面板上的OHF会显示什么颜色？",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.9036247146192771
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8948670231857195
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8678854427850232
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8594819619050205
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8418469313609898
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8368012750776348
+          }
+        ],
+        "decision": {
+          "verdict": "partially_related",
+          "candidateId": "ohf-fault-definition",
+          "sourcePageNumber": 72,
+          "supportingQuote": "• [设备过热] OHF: 设备过热",
+          "reason": "该候选资料直接定义了OHF与“设备过热”的对应关系，最直接地支持了问题中关于OHF与热状态有关的前提。"
+        }
+      },
+      {
+        "caseId": "V408",
+        "expectedVerdict": "partially_related",
+        "originalExpectedCandidateId": "ohf-thermal-threshold",
+        "acceptableCandidateIds": [
+          "ohf-thermal-threshold"
+        ],
+        "actualVerdict": "partially_related",
+        "actualCandidateId": "ohf-thermal-threshold",
+        "outcome": "adjudicated_correct",
+        "query": "变频器达到100%额定热状态后，手册允许连续运行多少小时？",
+        "candidateIds": [
+          "ohf-thermal-threshold",
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-error-detection-disable-danger",
+          "ohf-manual-reset-condition"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.9106379639047768
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8623829949703476
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8616989358688978
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8615997209211558
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8550285916068526
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8474101409387462
+          }
+        ],
+        "decision": {
+          "verdict": "partially_related",
+          "candidateId": "ohf-thermal-threshold",
+          "sourcePageNumber": 50,
+          "supportingQuote": "变频器热状态。100% = 额定热状态，1 18% =“OHF”阈值（变频器过载）。",
+          "reason": "该资料直接定义了问题中提到的业务对象“100%额定热状态”，是理解问题前提的最直接证据。其他候选资料主要涉及故障代码定义、复位步骤或安全警告，未直接关联“100%额定热状态”这一特定前提条件。"
+        }
+      },
+      {
+        "caseId": "V409",
+        "expectedVerdict": "partially_related",
+        "originalExpectedCandidateId": "ohf-manual-reset-condition",
+        "acceptableCandidateIds": [
+          "ohf-manual-reset-condition"
+        ],
+        "actualVerdict": "partially_related",
+        "actualCandidateId": "ohf-manual-reset-condition",
+        "outcome": "adjudicated_correct",
+        "query": "用输入位清除OHF时，这个1信号至少需要保持多少个控制周期？",
+        "candidateIds": [
+          "ohf-manual-reset-condition",
+          "ohf-fault-definition",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8830745694144564
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8719019004355943
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8688757731609793
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8605252547564747
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8568019720970776
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.82955805923077
+          }
+        ],
+        "decision": {
+          "verdict": "partially_related",
+          "candidateId": "ohf-manual-reset-condition",
+          "sourcePageNumber": 310,
+          "supportingQuote": "如果检测到的错误的原因已消失，则当分配的输入或位更改为 1 时，可手动清除检测到的错误。",
+          "reason": "该资料直接描述了通过输入位（信号为1）来清除错误（包括OHF）的操作前提，与问题中“用输入位清除OHF”的业务场景和前提条件最直接相关。虽然其他候选项列出了OHF可被清除或定义了OHF，但未涉及输入位清除的具体机制。注意：提供的候选资料中并未包含关于“保持多少个控制周期”的具体数值信息，但根据指令要求，仅选择支持问题前提（即使用输入位清除这一行为本身）的最直接资料。"
+        }
+      },
+      {
+        "caseId": "V410",
+        "expectedVerdict": "partially_related",
+        "originalExpectedCandidateId": "product-restart-warning",
+        "acceptableCandidateIds": [
+          "product-restart-warning"
+        ],
+        "actualVerdict": "partially_related",
+        "actualCandidateId": "product-restart-warning",
+        "outcome": "adjudicated_correct",
+        "query": "重启功能执行故障复位并重启驱动器后，会自动重试几次？",
+        "candidateIds": [
+          "product-restart-warning",
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-manual-reset-condition",
+          "ohf-error-detection-disable-danger",
+          "ohf-thermal-threshold"
+        ],
+        "ranking": [
+          {
+            "id": "product-restart-warning",
+            "score": 0.8912202491661995
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.869477158841507
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8626758527548389
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8479901622304186
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8415146622248098
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8369315500546058
+          }
+        ],
+        "decision": {
+          "verdict": "partially_related",
+          "candidateId": "product-restart-warning",
+          "sourcePageNumber": 310,
+          "supportingQuote": "“重启”功能执行“故障复位”并重启驱动器。",
+          "reason": "该候选资料直接描述了问题中提到的业务对象“重启功能”及其执行的动作（执行故障复位并重启驱动器），与问题前提完全匹配。其他候选资料主要涉及手动复位、不可复位错误的处理流程或特定错误代码，未直接描述重启功能的定义或行为。"
+        }
+      },
+      {
+        "caseId": "V411",
+        "expectedVerdict": "partially_related",
+        "originalExpectedCandidateId": "ohf-error-detection-disable-danger",
+        "acceptableCandidateIds": [
+          "ohf-error-detection-disable-danger"
+        ],
+        "actualVerdict": "partially_related",
+        "actualCandidateId": "ohf-error-detection-disable-danger",
+        "outcome": "adjudicated_correct",
+        "query": "使用其他监控功能替代被禁用的错误检测时，手册指定了哪个传感器品牌？",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "product-restart-warning",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8900676302455776
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8789784529654906
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8711437370015124
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8689964938773124
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8644818065108705
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.83388202161455
+          }
+        ],
+        "decision": {
+          "verdict": "partially_related",
+          "candidateId": "ohf-error-detection-disable-danger",
+          "sourcePageNumber": 329,
+          "supportingQuote": "执行不会触发设备自动错误响应，但允许采用其他方式，按照所有适用法规与标准以及风险评估进行充分\n与相应响应的其他监控功能，来取代禁用的监控功能。",
+          "reason": "该候选资料直接对应问题中关于“使用其他监控功能替代被禁用的错误检测”的前提描述。虽然原文并未指定具体的传感器品牌（暗示前提可能不成立或需进一步查找），但该段落是唯一讨论用其他监控功能取代禁用功能的来源，因此是最直接支持问题前提（即存在此类替代方案说明）的资料。"
+        }
+      },
+      {
+        "caseId": "V412",
+        "expectedVerdict": "partially_related",
+        "originalExpectedCandidateId": "unresettable-fault-power-isolation-procedure",
+        "acceptableCandidateIds": [
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "actualVerdict": "partially_related",
+        "actualCandidateId": "unresettable-fault-power-isolation-procedure",
+        "outcome": "adjudicated_correct",
+        "query": "测得PA/+与PC/-低于42Vdc后，手册规定万用表应切到哪个量程？",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure",
+          "product-restart-warning",
+          "ohf-thermal-threshold"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8488661855642987
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.844113429543505
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8423438963945422
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8393285407092795
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8327172911000387
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8277036687865933
+          }
+        ],
+        "decision": {
+          "verdict": "partially_related",
+          "candidateId": "unresettable-fault-power-isolation-procedure",
+          "sourcePageNumber": 385,
+          "supportingQuote": "测量 P A/+ 和 PC/- 端子之间的直流母线电压，确保该电压低于 42 Vdc。",
+          "reason": "该候选资料中的步骤4明确提到了测量PA/+与PC/-端子间电压并确保低于42Vdc的操作，与问题中描述的前提条件完全一致，且属于同一业务对象（变频器/驱动器维护）下的直接相关步骤。"
+        }
+      },
+      {
+        "caseId": "V413",
+        "expectedVerdict": "not_answerable",
+        "originalExpectedCandidateId": null,
+        "acceptableCandidateIds": null,
+        "actualVerdict": "not_answerable",
+        "actualCandidateId": null,
+        "outcome": "adjudicated_correct",
+        "query": "人力资源看板把员工‘100%额定热状态’设为满勤时，对应哪个绩效等级？",
+        "candidateIds": [
+          "ohf-thermal-threshold",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger",
+          "product-restart-warning",
+          "ohf-manual-reset-condition"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8768894265574055
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8486856777342874
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8332449816736079
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8251114587365013
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.819473537272273
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8022429424744689
+          }
+        ],
+        "decision": {
+          "verdict": "not_answerable",
+          "candidateId": null,
+          "sourcePageNumber": null,
+          "supportingQuote": null,
+          "reason": "问题涉及人力资源看板、员工满勤及绩效等级，属于HR管理业务场景；候选资料涉及变频器热状态、OHF故障代码及设备维护，属于工业自动化设备技术场景。两者业务对象完全不同。"
+        }
+      },
+      {
+        "caseId": "V414",
+        "expectedVerdict": "not_answerable",
+        "originalExpectedCandidateId": null,
+        "acceptableCandidateIds": null,
+        "actualVerdict": "not_answerable",
+        "actualCandidateId": null,
+        "outcome": "adjudicated_correct",
+        "query": "手机应用里‘输入或位更改为1’代表哪个开关已经打开？",
+        "candidateIds": [
+          "ohf-manual-reset-condition",
+          "ohf-error-detection-disable-danger",
+          "product-restart-warning",
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8674679786341047
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8561789121133438
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8531094141577106
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8499949254725643
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8372686018739219
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8231034484917882
+          }
+        ],
+        "decision": {
+          "verdict": "not_answerable",
+          "candidateId": null,
+          "sourcePageNumber": null,
+          "supportingQuote": null,
+          "reason": "问题询问的是'手机应用'中的开关含义，属于移动软件业务场景；候选资料描述的是工业变频器/驱动器的故障复位、错误代码及硬件操作步骤。两者业务对象完全不同（消费级软件 vs 工业硬件），因此sameBusinessObject为false，进而导致其他两项也为false。"
+        }
+      },
+      {
+        "caseId": "V415",
+        "expectedVerdict": "not_answerable",
+        "originalExpectedCandidateId": null,
+        "acceptableCandidateIds": null,
+        "actualVerdict": "not_answerable",
+        "actualCandidateId": null,
+        "outcome": "adjudicated_correct",
+        "query": "云服务器控制台执行‘故障复位并重启’后，哪个容器会先恢复？",
+        "candidateIds": [
+          "ohf-manual-reset-condition",
+          "product-restart-warning",
+          "unresettable-fault-power-isolation-procedure",
+          "ohf-fault-definition",
+          "ohf-error-detection-disable-danger"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8655716770984123
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8645664851883649
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8549610598578792
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8503418494623498
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.845125776241167
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8198261588143563
+          }
+        ],
+        "decision": {
+          "verdict": "not_answerable",
+          "candidateId": null,
+          "sourcePageNumber": null,
+          "supportingQuote": null,
+          "reason": "问题涉及云服务器控制台和容器恢复顺序，属于云计算业务场景；候选资料涉及工业变频器（驱动器）的故障复位、错误代码（如OHF）及断电维护步骤，属于工业自动化设备场景。两者业务对象完全不同，因此sameBusinessObject为false，进而导致其他两项也为false。"
+        }
+      },
+      {
+        "caseId": "V416",
+        "expectedVerdict": "not_answerable",
+        "originalExpectedCandidateId": null,
+        "acceptableCandidateIds": null,
+        "actualVerdict": "not_answerable",
+        "actualCandidateId": null,
+        "outcome": "adjudicated_correct",
+        "query": "保险项目完成‘全面风险评估’后，应选择哪家公司的监控服务？",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "ohf-fault-definition",
+          "product-restart-warning",
+          "ohf-manual-reset-condition",
+          "ohf-thermal-threshold"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8628794732614594
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8456424943295623
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8380616063182795
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8287038512271341
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8210286485757341
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8166636476000925
+          }
+        ],
+        "decision": {
+          "verdict": "not_answerable",
+          "candidateId": null,
+          "sourcePageNumber": null,
+          "supportingQuote": null,
+          "reason": "问题询问的是‘保险项目’完成风险评估后应选择哪家公司的‘监控服务’，属于商业保险或第三方服务采购场景。候选资料涉及工业设备（变频器/驱动器）的‘错误检测禁用’、‘故障代码’及‘热状态’等技术操作规范，虽然提到了‘全面风险评估’，但语境是工业安全合规而非保险业务，且未提及任何保险公司或监控服务提供商名称。业务对象不匹配。"
+        }
+      },
+      {
+        "caseId": "V417",
+        "expectedVerdict": "not_answerable",
+        "originalExpectedCandidateId": null,
+        "acceptableCandidateIds": null,
+        "actualVerdict": "not_answerable",
+        "actualCandidateId": null,
+        "outcome": "adjudicated_correct",
+        "query": "电动汽车充电桩的PA/+与PC/-低于42Vdc时，保修条款允许用户自行维修吗？",
+        "candidateIds": [
+          "ohf-error-detection-disable-danger",
+          "product-restart-warning",
+          "ohf-fault-definition",
+          "ohf-manual-reset-condition",
+          "unresettable-fault-power-isolation-procedure"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.8648313470553666
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.85659828381125
+          },
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8537769455944444
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8500680202599666
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8445279842047607
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8357658170119049
+          }
+        ],
+        "decision": {
+          "verdict": "not_answerable",
+          "candidateId": null,
+          "sourcePageNumber": null,
+          "supportingQuote": null,
+          "reason": "问题针对的是'电动汽车充电桩'的保修条款，而候选资料明确指向'变频器'（如Schneider Electric变频器）的操作手册、故障代码及维护步骤。两者属于完全不同的工业设备产品，业务对象不一致。"
+        }
+      },
+      {
+        "caseId": "V418",
+        "expectedVerdict": "not_answerable",
+        "originalExpectedCandidateId": null,
+        "acceptableCandidateIds": null,
+        "actualVerdict": "not_answerable",
+        "actualCandidateId": null,
+        "outcome": "adjudicated_correct",
+        "query": "采购合同写明联系当地Schneider Electric代表时，能申请多少折扣？",
+        "candidateIds": [
+          "ohf-fault-definition",
+          "unresettable-fault-power-isolation-procedure",
+          "product-restart-warning",
+          "ohf-thermal-threshold",
+          "ohf-error-detection-disable-danger"
+        ],
+        "ranking": [
+          {
+            "id": "ohf-fault-definition",
+            "score": 0.8438449083983
+          },
+          {
+            "id": "unresettable-fault-power-isolation-procedure",
+            "score": 0.8342787630560119
+          },
+          {
+            "id": "product-restart-warning",
+            "score": 0.8263370257825475
+          },
+          {
+            "id": "ohf-thermal-threshold",
+            "score": 0.8235461018106462
+          },
+          {
+            "id": "ohf-error-detection-disable-danger",
+            "score": 0.82286480893486
+          },
+          {
+            "id": "ohf-manual-reset-condition",
+            "score": 0.8165714516840007
+          }
+        ],
+        "decision": {
+          "verdict": "not_answerable",
+          "candidateId": null,
+          "sourcePageNumber": null,
+          "supportingQuote": null,
+          "reason": "问题涉及采购合同中的商业折扣申请，属于商务销售场景；候选资料均为工业变频器的技术手册，涉及故障代码定义、维修步骤和安全警告。两者业务对象和场景完全不同。"
+        }
+      }
+    ]
+  },
+  "gates": {
+    "overallVerdictAccuracy": true,
+    "directlyAnswerableVerdictAccuracy": true,
+    "partiallyRelatedVerdictAccuracy": true,
+    "notAnswerableVerdictAccuracy": true,
+    "overallAdjudicatedExactAccuracy": true,
+    "directlyAnswerableAdjudicatedExactAccuracy": true,
+    "partiallyRelatedAdjudicatedExactAccuracy": true,
+    "notAnswerableAdjudicatedExactAccuracy": true,
+    "unsafeDirectAcceptCount": true,
+    "judgeErrorCount": true
+  },
+  "passed": true,
+  "interpretationLimits": [
+    "题目由项目组根据官方摘录编写，不代表真实工厂查询分布",
+    "候选摘录来自施耐德NVE41300手册，但尚未获得ATV320领域工程师审核",
+    "可接受证据集合是项目组预标注，尚未获得领域双人复核",
+    "结果只能说明固定第五版策略在本项目18道首次未见问题上的表现",
+    "不得外推为生产维修答案准确率"
+  ]
+}

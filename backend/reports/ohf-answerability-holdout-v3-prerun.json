@@ -1,0 +1,49 @@
+{
+  "record_version": 1,
+  "status": "frozen_before_first_model_run",
+  "frozen_date": "2026-08-19",
+  "dataset_role": "project_authored_unseen_holdout_not_production_data",
+  "dataset": {
+    "path": "data/evaluation/ohf-answerability-holdout-v3.json",
+    "sha256": "4400d170f4f8d6ad89de1253a03ad8389baf2993370e003e6e2adbb33901615b",
+    "case_count": 18,
+    "direct_count": 6,
+    "partial_count": 6,
+    "not_answerable_count": 6
+  },
+  "candidate_manifest": {
+    "path": "data/curated/schneider/atv320/ohf-knowledge-candidates-v1.json",
+    "sha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5",
+    "source_document_reference": "NVE41300",
+    "review_status": "unreviewed"
+  },
+  "strategy": {
+    "strategy_id": "e5-top5-qwen-answerability-v2-three-class",
+    "candidate_limit": 5,
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "embedding_model_file_sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+    "judge_model_id": "qwen3.7-plus",
+    "provider_declared_equivalent_snapshot_id": "qwen3.7-plus-2026-05-26",
+    "model_identity_assurance": "provider_declared_alias_equivalence",
+    "judge_prompt_version": "answerability-v2",
+    "judge_implementation_path": "src/evaluation/qwen-answerability-judge-v2.ts",
+    "judge_implementation_sha256": "e67a7001b0566c0b5cfca8890cedb798828e00510049ffbbfc1f2b1201aac337",
+    "evaluator_path": "src/evaluation/answerability-three-class-evaluation.ts",
+    "evaluator_sha256": "42b901511b3440947967dfb8fb4773a28bac9e93e76f1f8beb904904259f7794",
+    "runner_path": "src/evaluation/answerability-holdout-v3-runner.ts",
+    "runner_sha256": "8c49d6925f5326a8e2f18827750ac64f708cd830b6c27d45345fadd91c5dfa92"
+  },
+  "acceptance_targets": {
+    "overall_exact_accuracy_minimum": 0.9444444444444444,
+    "per_class_accuracy_minimum": 0.8333333333333334,
+    "unsafe_direct_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "interpretation_limits": [
+    "题目由项目组编写，不代表真实工厂查询分布",
+    "候选摘录来自施耐德NVE41300手册，但尚未获得ATV320领域工程师审核",
+    "通过只说明固定策略在18道首次未见题上达到预设门槛",
+    "不得外推为生产维修答案准确率"
+  ]
+}

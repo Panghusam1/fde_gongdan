@@ -1,0 +1,29 @@
+{
+  "recordVersion": 1,
+  "frozenAt": "2026-08-19T12:53:09.5521719+08:00",
+  "status": "frozen_before_first_model_run",
+  "dataset": {
+    "id": "ohf-answerability-holdout-v1",
+    "path": "data/evaluation/ohf-answerability-holdout-v1.json",
+    "sha256": "0d3b8db4a65c00da728afaaaee8270ac3e2ffb23df68993b8ad89745eb4f6894",
+    "caseCount": 24,
+    "answerableCaseCount": 12,
+    "unanswerableCaseCount": 12
+  },
+  "developmentDataset": {
+    "id": "ohf-retrieval-cases-v2-40",
+    "sha256": "7efc872e883733bc41bb9f155787ddc33c15bdf726099400b359823897e73005"
+  },
+  "candidateManifestSha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5",
+  "thresholdPolicy": {
+    "id": "e5-small-answerability-candidate-v1",
+    "vectorSimilarityMinimum": 0.86,
+    "comparison": "greater_than_or_equal"
+  },
+  "acceptanceTargets": {
+    "answerableCorrectAcceptRateMinimum": 0.75,
+    "unanswerableAbstainAccuracyMinimum": 1,
+    "acceptedPrecisionMinimum": 0.9
+  },
+  "firstModelRunStarted": false
+}

@@ -1,0 +1,40 @@
+{
+  "record_version": 1,
+  "status": "frozen_before_first_model_run",
+  "frozen_date": "2026-08-19",
+  "dataset_role": "project_authored_unseen_holdout_not_production_data",
+  "dataset": {
+    "path": "data/evaluation/ohf-answerability-holdout-v2.json",
+    "sha256": "17d764cdb1e8e7ab127489a756e49d881696c19119c9a9ff2ca7f5b2c6033be4",
+    "case_count": 36,
+    "answerable_count": 18,
+    "unanswerable_count": 18
+  },
+  "candidate_manifest": {
+    "path": "data/curated/schneider/atv320/ohf-knowledge-candidates-v1.json",
+    "sha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5",
+    "review_status": "unreviewed"
+  },
+  "strategy": {
+    "strategy_id": "e5-top5-qwen-answerability-v1",
+    "candidate_limit": 5,
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "embedding_model_file_sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v1",
+    "judge_implementation_path": "src/evaluation/qwen-answerability-judge.ts",
+    "judge_implementation_sha256": "7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65"
+  },
+  "acceptance_targets": {
+    "answerable_correct_accept_rate_minimum": 0.9,
+    "unanswerable_abstain_accuracy_minimum": 1,
+    "accepted_precision_minimum": 0.9,
+    "judge_error_count_maximum": 0
+  },
+  "interpretation_limits": [
+    "通过只说明该固定策略在本项目编写的36道未见题上达到门槛",
+    "题目不来自真实工厂日志且标签未获ATV320领域工程师审核",
+    "候选知识仍为未审核状态，结果不能作为生产维修答案准确率"
+  ]
+}

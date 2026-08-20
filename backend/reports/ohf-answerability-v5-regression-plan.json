@@ -1,0 +1,44 @@
+{
+  "record_version": 1,
+  "status": "frozen_before_full_v5_regression",
+  "frozen_after_five_case_architecture_probe": true,
+  "source_evidence": {
+    "first_run_report_sha256": "71ff7be8fb739c47d516a34ee8ce5d4886ef173b79179788502f253e891544db",
+    "v3_regression_report_sha256": "61ecfdec4b1b7e5bd09d7772f56c187680c03733c8a20c064c30496c41946178",
+    "candidate_manifest_sha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5"
+  },
+  "strategy": {
+    "judge_model_id": "qwen3.7-plus",
+    "from_prompt_version": "answerability-v3",
+    "to_prompt_version": "answerability-v5-two-stage",
+    "judge_implementation_sha256": "46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7",
+    "evaluator_sha256": "42b901511b3440947967dfb8fb4773a28bac9e93e76f1f8beb904904259f7794",
+    "runner_sha256": "ae79cd2b156218d5e025cd2b5d835787894fbc7733266e14b4e9e6b021f2fb24",
+    "candidate_order_source": "failed_first_run_top5"
+  },
+  "single_changed_variable": {
+    "name": "judgment_orchestration",
+    "from": "single_call_direct_verdict",
+    "to": "two_stage_facts_program_verdict_evidence"
+  },
+  "acceptance_targets": {
+    "overall_exact_accuracy_minimum": 0.9444444444444444,
+    "per_class_accuracy_minimum": 0.8333333333333334,
+    "unsafe_direct_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "architecture_probe": {
+    "case_ids": ["V307", "V308", "V317", "V301", "V309"],
+    "verdicts_correct": 5,
+    "valid_quotes": 4,
+    "V307_candidate_label_ambiguity": "模型选择ohf-thermal-threshold，冻结标签指定ohf-fault-definition；两者都能支持问题前提，原标签的唯一候选约束存在歧义"
+  },
+  "interpretation_limits": [
+    "18道题已经被多轮分析暴露，本轮只能称为受控回归，不能称为未见测试",
+    "本轮复用失败首跑保存的E5前五候选顺序，以隔离判断编排变化",
+    "V307的单一候选标签存在歧义，但为防止事后改答案，本轮仍沿用原标签计分",
+    "候选摘录来自施耐德NVE41300手册，但尚未获得ATV320领域工程师审核",
+    "题目由项目组编写，不代表真实工厂查询分布",
+    "结果不得外推为生产维修答案准确率"
+  ]
+}

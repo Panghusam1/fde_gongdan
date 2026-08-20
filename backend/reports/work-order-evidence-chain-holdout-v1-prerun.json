@@ -1,0 +1,44 @@
+{
+  "record_version": 1,
+  "status": "frozen_before_first_model_run",
+  "frozen_date": "2026-08-19",
+  "dataset_role": "project_authored_unseen_not_production_data",
+  "model_identity": {
+    "requested_model_id": "qwen3.7-plus",
+    "provider_declared_equivalent_snapshot_id": "qwen3.7-plus-2026-05-26",
+    "assurance": "provider_declared_alias_equivalence",
+    "limitation": "当前令牌资源包端点使用别名；本记录依赖阿里云官方对别名与快照等效关系的声明，不等于客户端直接请求了不可变快照名"
+  },
+  "frozen_inputs": [
+    {
+      "path": "data/evaluation/work-order-evidence-chain-holdout-v1.json",
+      "sha256": "9922c6724932f9623e34bb71a9be0c6d332574ae344392b170dffb58470d1e39",
+      "role": "四条问题、两条候选资料、预期判断和数据库终态"
+    },
+    {
+      "path": "src/evaluation/qwen-answerability-judge.ts",
+      "sha256": "7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65",
+      "role": "提示词、模型调用和结构校验"
+    },
+    {
+      "path": "src/agent-tools/assess-work-order-evidence.ts",
+      "sha256": "1f02fc63560d6534223291b100c50866ce1c7b462ff1128c919c15ce4c17e3b2",
+      "role": "候选、页码、逐字引用和证据判断落库"
+    },
+    {
+      "path": "src/agent-tools/assess-evidence-and-run-risk.ts",
+      "sha256": "92cb11f0a97502d49edae7a8c06059807073d3b706f9b196be39e37eaf2834b8",
+      "role": "高危规则前置及证据门到风险门的编排"
+    }
+  ],
+  "acceptance_targets": {
+    "case_count": 4,
+    "case_pass_rate_minimum": 1,
+    "judge_error_count_maximum": 0
+  },
+  "interpretation_limits": [
+    "检索使用确定性测试向量，不能替代E5检索准确率评测",
+    "资料和题目由项目组编写，不能冒充厂家手册或真实工厂数据",
+    "通过只证明四条业务分支在当前程序和数据库中形成预期终态"
+  ]
+}

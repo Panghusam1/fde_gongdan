@@ -1,0 +1,62 @@
+{
+  "record_version": 1,
+  "created_at": "2026-08-19T19:32:58.2402478+08:00",
+  "status": "frozen_before_exposed_regression_run",
+  "data_role": "exposed_regression_not_unseen",
+  "target_case_id": "U301",
+  "source_first_run_report": "reports/qwen-work-order-end-to-end-holdout-v3-first-run.json",
+  "source_first_run_passed": true,
+  "source_case_first_run_verdict": "not_answerable",
+  "hypothesis": "数据库来源链保存NVE41300、05、zh-CN，但旧判断器输入遗漏这些字段；补齐来源身份后同一问题应成为可直接回答。",
+  "single_change": "在旧证据门外增加数据库来源身份适配器，并在第五版两阶段判断请求中注入独立来源字段。",
+  "acceptance_target": {
+    "evidence_verdict": "directly_answerable",
+    "source_page_number": 395,
+    "risk_decision": "proposal_allowed",
+    "human_handoffs": 0
+  },
+  "production_accuracy_claim_allowed": false,
+  "new_unseen_accuracy_claim_allowed": false,
+  "frozen_inputs": [
+    {"path":"reports/qwen-work-order-end-to-end-holdout-v3-first-run.json","sha256":"09fe158d945df6660d16c4191eae41ca225dc547b452b026752528323442a7c1"},
+    {"path":"data/evaluation/work-order-end-to-end-holdout-v3.json","sha256":"de1d865d03f22506f1b736a17398943df457d9395b4866feafa926df93229f49"},
+    {"path":"data/processed/schneider/atv320/NVE41300-v05-zh-CN-pages.json","sha256":"0fa0e4cf7238d1c659348586f2ce15fc83dda0013266be08ce8b68b8199019ce"},
+    {"path":"src/evaluation/source-aware-work-order-judge.ts","sha256":"94ee1a94fdd3c7c47a5f81d3c5a1faf8ee4519c4aa3268b80b8c7f296d317356"},
+    {"path":"src/evaluation/qwen-answerability-judge-v6.ts","sha256":"5885eb28f020d8075dfd87adcc3e9e359eae0eb643c9c0dff0375d1167eae72a"},
+    {"path":"src/evaluation/qwen-answerability-judge-v5.ts","sha256":"46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"},
+    {"path":"src/evaluation/qwen-answerability-judge.ts","sha256":"7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65"},
+    {"path":"src/agent-tools/assess-work-order-evidence.ts","sha256":"1f02fc63560d6534223291b100c50866ce1c7b462ff1128c919c15ce4c17e3b2"},
+    {"path":"src/agent-tools/assess-evidence-and-run-risk.ts","sha256":"92cb11f0a97502d49edae7a8c06059807073d3b706f9b196be39e37eaf2834b8"},
+    {"path":"tests/work-order-evidence-validation.test.ts","sha256":"60e49969aa461eea141915ca75ee35de2d6c27a2eecf00fa420d860123d1ff41"}
+  ],
+  "database_bundle": {
+    "paths": [
+      "database/migrations/001_factories_equipment_work_orders.sql",
+      "database/migrations/002_match_work_order_factory_to_equipment.sql",
+      "database/migrations/003_source_documents_and_chunks.sql",
+      "database/migrations/004_reject_blank_knowledge_text.sql",
+      "database/migrations/005_users_and_factory_memberships.sql",
+      "database/migrations/006_product_families_and_equipment_models.sql",
+      "database/migrations/007_link_equipment_to_canonical_models.sql",
+      "database/migrations/008_work_order_identity_status_and_events.sql",
+      "database/migrations/009_link_source_documents_to_product_families.sql",
+      "database/migrations/010_distinguish_source_version_dates.sql",
+      "database/migrations/011_document_pages.sql",
+      "database/migrations/012_classify_and_review_knowledge_chunks.sql",
+      "database/migrations/013_trace_knowledge_chunks_to_page_extractions.sql",
+      "database/migrations/014_record_exact_chunk_boundaries.sql",
+      "database/migrations/015_audit_knowledge_chunk_reviews.sql",
+      "database/migrations/016_separate_reproducible_chunk_embeddings.sql",
+      "database/migrations/017_versioned_knowledge_search_terms.sql",
+      "database/migrations/018_audit_work_order_knowledge_searches.sql",
+      "database/migrations/019_work_order_risk_assessments.sql",
+      "database/migrations/020_human_handoff_requests.sql",
+      "database/migrations/021_resolution_proposals.sql",
+      "database/migrations/022_proposal_user_feedback.sql",
+      "database/migrations/023_input_high_risk_intent.sql",
+      "database/migrations/024_work_order_evidence_assessments.sql",
+      "database/seeds/001_atv320_nve41300.sql"
+    ],
+    "sha256": "c018321ccd8c611197a52d5c88fddea89790ded6c250a926d90bc4c7c6ba4ad5"
+  }
+}

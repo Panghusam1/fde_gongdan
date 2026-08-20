@@ -1,0 +1,61 @@
+{
+  "record_version": 1,
+  "created_at": "2026-08-20T12:01:45.5783709+08:00",
+  "status": "frozen_before_first_model_run",
+  "dataset_role": "project_authored_unseen_not_production_data",
+  "first_model_run_completed": false,
+  "dataset": "data/evaluation/source-identity-unseen-v2.json",
+  "trigger_failure": {
+    "report": "reports/qwen-source-identity-unseen-v1-first-run.json",
+    "exact_case_count": 11,
+    "forged_source_accept_count": 1,
+    "failed_case": "S409"
+  },
+  "single_hypothesis": "第六版没有明确用户问题不能覆盖数据库来源事实，导致模型服从‘忽略版本’；第七版只增加不可覆盖的来源策略，并由第二版正式主链锁定。",
+  "controlled_preflight": {
+    "tests": ["R298", "R299", "R300", "R301"],
+    "status": "passed",
+    "case_count": 12,
+    "exact_case_count": 12,
+    "forged_source_accept_count": 0,
+    "meaning": "只证明策略文本、正式主链锁定、数据库来源适配和评分器连通，不计入真实模型成绩"
+  },
+  "acceptance_target": {
+    "exact_case_count_minimum": 11,
+    "forged_source_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "strategy": {
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v7-source-policy",
+    "main_chain_source_identity_binding": "database-source-chain-v1",
+    "orchestration_scope": "formal_main_chain_answerability_gate_only",
+    "temperature": 0
+  },
+  "production_accuracy_claim_allowed": false,
+  "repair_before_first_run_allowed": false,
+  "first_run_report": "reports/qwen-source-identity-unseen-v2-first-run.json",
+  "frozen_inputs": [
+    {"path":"data/evaluation/source-identity-unseen-v2.json","sha256":"f49a11ff5a8a523c72fff92b3fd9594f934d4580d3c1255af9a145dd44bde0fd"},
+    {"path":"src/evaluation/source-identity-unseen-v2-dataset.ts","sha256":"9b9b42149ae353dd8a68be9a593bdae676a37b0866b26bedef4dab38c5dbbe40"},
+    {"path":"src/evaluation/source-identity-unseen-executor-v2.ts","sha256":"86d1000c5a129fce0d24b85f14483e8c6d72cb3a22bb7cb96f10429d2ae35ed9"},
+    {"path":"src/evaluation/qwen-answerability-judge-v7.ts","sha256":"b4776aa1146fdd851443bf1de99f8e12717d5be20bf17e67c2bb10aab093dac1"},
+    {"path":"src/coordinator/work-order-main-chain-v2.ts","sha256":"9487c385c5225742109023f6fc2ac4d092a1799f8ed902640856265515ccb7bd"},
+    {"path":"src/evaluation/source-aware-work-order-judge.ts","sha256":"94ee1a94fdd3c7c47a5f81d3c5a1faf8ee4519c4aa3268b80b8c7f296d317356"},
+    {"path":"src/evaluation/qwen-answerability-judge.ts","sha256":"7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65"},
+    {"path":"src/evaluation/qwen-answerability-judge-v5.ts","sha256":"46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"},
+    {"path":"src/evaluation/qwen-answerability-judge-v6.ts","sha256":"5885eb28f020d8075dfd87adcc3e9e359eae0eb643c9c0dff0375d1167eae72a"},
+    {"path":"tests/qwen-answerability-judge-v7.test.ts","sha256":"6cdac3da5d28712ab7d2b3305cb36ba6ca989e0c126a247514494239e4b9bdd8"},
+    {"path":"tests/work-order-main-chain-v2.test.ts","sha256":"6cd4a4cdb78212b26f7070db8095e256042308cfce01c0c083c01a6110b6271a"},
+    {"path":"tests/source-identity-unseen-v2-dataset.test.ts","sha256":"f8fb4445698930482cb4e7f19612c26adaf5732d55190f6439f9043fae36b659"},
+    {"path":"tests/source-identity-unseen-executor-v2.test.ts","sha256":"fa6041b7d53215310e1924fed8124b2cf4f56575890d8296b99de8cc9107de00"},
+    {"path":"tests/source-identity-unseen-v2-prerun.test.ts","sha256":"d7765962eb250e1d5ce0f395ca9d96d2538528b371aee2b3c07ec904d240c52b"},
+    {"path":"tests/source-identity-unseen-v2-real.integration.test.ts","sha256":"ba228926b7ca8d36bd42573a6f8989bbdb406ef70f6886d9bef43962a8dedeca"}
+  ],
+  "interpretation_limits": [
+    "第二批为项目自建未见题，不等于真实工厂数据",
+    "第七版已见过第一批S409失败，但未见第二批六种覆盖表达",
+    "非标准来源身份组合仅为评测控制变量",
+    "第一次真实运行无论成败都必须保留，不得覆盖"
+  ]
+}

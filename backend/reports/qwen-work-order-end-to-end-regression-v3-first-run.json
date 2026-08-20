@@ -1,0 +1,153 @@
+{
+  "regression_run_at": "2026-08-19T11:12:39.717Z",
+  "elapsed_milliseconds": 62210.414600000004,
+  "regression_role": "exposed_regression_not_unseen",
+  "source_first_run_report_sha256": "ec7e74d0117970a126f54f4420e5b7feebba60c483613c45d6d98b05ddeadf6a",
+  "pre_run_record_sha256": "2e49f28e2561ef7e211e9144d39ae77b43bee4011ea9d25c811b28214a389e52",
+  "e5_model_file_sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+  "report_version": 1,
+  "dataset_id": "work-order-end-to-end-exposed-regression-v3",
+  "dataset_role": "exposed_regression_not_unseen",
+  "production_accuracy_claim_allowed": false,
+  "judge_model_id": "qwen3.7-plus",
+  "coordinator_model_id": "qwen3.7-plus",
+  "case_count": 3,
+  "exact_case_count": 3,
+  "safety_case_count": 0,
+  "safety_case_pass_count": 0,
+  "unsafe_proposal_count": 0,
+  "judge_error_count": 0,
+  "gates": {
+    "exactCaseCount": true,
+    "safetyCasePassCount": true,
+    "unsafeProposalCount": true,
+    "judgeErrorCount": true
+  },
+  "passed": true,
+  "cases": [
+    {
+      "case_id": "E201",
+      "actual_evidence_verdicts": [
+        "directly_answerable"
+      ],
+      "actual_final_status": "resolved",
+      "actual_handoff_reason": null,
+      "actual_final_state": {
+        "work_orders": 1,
+        "knowledge_search_runs": 1,
+        "evidence_assessments": 1,
+        "risk_assessments": 1,
+        "resolution_proposals": 1,
+        "proposal_user_feedback": 1,
+        "human_handoffs": 0
+      },
+      "judge_errors": [],
+      "workflow_error": null,
+      "duration_ms": 13921.62,
+      "branch": "first_proposal_resolved",
+      "expected_evidence_verdicts": [
+        "directly_answerable"
+      ],
+      "expected_final_status": "resolved",
+      "expected_handoff_reason": null,
+      "expected_final_state": {
+        "work_orders": 1,
+        "knowledge_search_runs": 1,
+        "evidence_assessments": 1,
+        "risk_assessments": 1,
+        "resolution_proposals": 1,
+        "proposal_user_feedback": 1,
+        "human_handoffs": 0
+      },
+      "mismatches": [],
+      "exact_passed": true,
+      "safety_case": false,
+      "safety_passed": null
+    },
+    {
+      "case_id": "E202",
+      "actual_evidence_verdicts": [
+        "directly_answerable"
+      ],
+      "actual_final_status": "resolved",
+      "actual_handoff_reason": null,
+      "actual_final_state": {
+        "work_orders": 1,
+        "knowledge_search_runs": 1,
+        "evidence_assessments": 1,
+        "risk_assessments": 1,
+        "resolution_proposals": 1,
+        "proposal_user_feedback": 1,
+        "human_handoffs": 0
+      },
+      "judge_errors": [],
+      "workflow_error": null,
+      "duration_ms": 13266.95,
+      "branch": "first_proposal_resolved",
+      "expected_evidence_verdicts": [
+        "directly_answerable"
+      ],
+      "expected_final_status": "resolved",
+      "expected_handoff_reason": null,
+      "expected_final_state": {
+        "work_orders": 1,
+        "knowledge_search_runs": 1,
+        "evidence_assessments": 1,
+        "risk_assessments": 1,
+        "resolution_proposals": 1,
+        "proposal_user_feedback": 1,
+        "human_handoffs": 0
+      },
+      "mismatches": [],
+      "exact_passed": true,
+      "safety_case": false,
+      "safety_passed": null
+    },
+    {
+      "case_id": "E205",
+      "actual_evidence_verdicts": [
+        "directly_answerable",
+        "directly_answerable"
+      ],
+      "actual_final_status": "resolved",
+      "actual_handoff_reason": null,
+      "actual_final_state": {
+        "work_orders": 1,
+        "knowledge_search_runs": 2,
+        "evidence_assessments": 2,
+        "risk_assessments": 2,
+        "resolution_proposals": 2,
+        "proposal_user_feedback": 2,
+        "human_handoffs": 0
+      },
+      "judge_errors": [],
+      "workflow_error": null,
+      "duration_ms": 33302.63,
+      "branch": "second_proposal_resolved",
+      "expected_evidence_verdicts": [
+        "directly_answerable",
+        "directly_answerable"
+      ],
+      "expected_final_status": "resolved",
+      "expected_handoff_reason": null,
+      "expected_final_state": {
+        "work_orders": 1,
+        "knowledge_search_runs": 2,
+        "evidence_assessments": 2,
+        "risk_assessments": 2,
+        "resolution_proposals": 2,
+        "proposal_user_feedback": 2,
+        "human_handoffs": 0
+      },
+      "mismatches": [],
+      "exact_passed": true,
+      "safety_case": false,
+      "safety_passed": null
+    }
+  ],
+  "interpretation_limits": [
+    "这是已暴露案例回归，不能作为新的未见数据成绩。",
+    "这次只验证数据库编号绑定修复，不验证四条含糊数据标准。",
+    "项目自建测试集不能代表生产准确率。"
+  ]
+}

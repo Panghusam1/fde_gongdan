@@ -1,0 +1,33 @@
+{
+  "record_version": 1,
+  "status": "locked_after_v1_failure_before_v2_full_regression",
+  "locked_date": "2026-08-19",
+  "data_role": "exposed_regression_not_unseen_holdout",
+  "v1_failure_evidence": {
+    "path": "reports/work-order-evidence-chain-holdout-v1-first-run.json",
+    "sha256": "9a5bb27aaf7aaf98ef4e186fb3cf2914f437556f456fe557f8186a772aab8dab",
+    "result": "3/4 cases passed; WEC03 expected partially_related but returned not_answerable"
+  },
+  "root_cause": "answerability-v1中partially_related与not_answerable的文字定义存在逻辑重叠，缺少完整答案的相关资料同时满足两种描述",
+  "single_changed_variable": {
+    "from_prompt_version": "answerability-v1",
+    "to_prompt_version": "answerability-v2",
+    "change": "增加互斥判断顺序、关键对象重合边界和通风口因果示例；模型、题目、候选资料、数据库编排、风险规则与验收门不变",
+    "implementation_path": "src/evaluation/qwen-answerability-judge-v2.ts",
+    "implementation_sha256": "e67a7001b0566c0b5cfca8890cedb798828e00510049ffbbfc1f2b1201aac337"
+  },
+  "frozen_dataset": {
+    "path": "data/evaluation/work-order-evidence-chain-holdout-v1.json",
+    "sha256": "9922c6724932f9623e34bb71a9be0c6d332574ae344392b170dffb58470d1e39"
+  },
+  "acceptance_targets": {
+    "case_count": 4,
+    "case_pass_rate_minimum": 1,
+    "judge_error_count_maximum": 0
+  },
+  "interpretation_limits": [
+    "第二版使用已经暴露结果的四道题，只能证明已知失败得到修复，不能作为未见数据推广成绩",
+    "候选资料为受控测试夹具，不是厂家手册原文",
+    "检索使用确定性测试向量，不评价E5效果"
+  ]
+}

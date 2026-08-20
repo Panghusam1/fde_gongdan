@@ -1,0 +1,64 @@
+{
+  "record_version": 1,
+  "created_at": "2026-08-19T19:10:10.5148930+08:00",
+  "status": "frozen_before_exposed_regression_run",
+  "dataset_role": "exposed_regression_not_unseen",
+  "purpose": "只验证首次端到端运行暴露出的协调助手数据库编号绑定缺陷，不把本次结果冒充新的未见数据成绩。",
+  "source_first_run_report": "reports/qwen-work-order-end-to-end-holdout-v2-first-run.json",
+  "source_first_run_passed": false,
+  "target_case_ids": [
+    "E201",
+    "E202",
+    "E205"
+  ],
+  "target_failure_cause": "模型生成的数据库内部编号为空或错误，旧协调层直接信任这些编号。",
+  "single_architecture_change": "使用coordinator-v3-state-bound，在模型结果进入严格参数校验前，从当前工单上下文绑定数据库编号；工具编排层另有相同边界的独立测试。",
+  "excluded_label_ambiguity_case_ids": [
+    "E203",
+    "E204",
+    "E206",
+    "E207"
+  ],
+  "excluded_reason": "原题加入了官方资料未直接支持的限定词，预期却要求直接回答；这是数据标准问题，不计入本次架构修复。",
+  "acceptance_target": {
+    "exact_case_count": 3,
+    "workflow_error_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "production_accuracy_claim_allowed": false,
+  "new_unseen_accuracy_claim_allowed": false,
+  "frozen_inputs": [
+    {
+      "path": "data/evaluation/work-order-end-to-end-holdout-v2.json",
+      "sha256": "d2e025d884fadae64632cbf31d96b1a6b5b8368c929f9d17e119de6d1d8f2332"
+    },
+    {
+      "path": "reports/qwen-work-order-end-to-end-holdout-v2-first-run.json",
+      "sha256": "ec7e74d0117970a126f54f4420e5b7feebba60c483613c45d6d98b05ddeadf6a"
+    },
+    {
+      "path": "src/coordinator/qwen-coordinator-model-v3.ts",
+      "sha256": "c32f7675ebb29f933057a0b74d13523a74e64b578fe7a504924e8c1c8d718a36"
+    },
+    {
+      "path": "src/coordinator/qwen-coordinator-runtime-v3.ts",
+      "sha256": "b9b180bb51f26fb42b88e0f670a1ce64309647e3b49b7d79c448715cdc3b4800"
+    },
+    {
+      "path": "src/evaluation/work-order-end-to-end-holdout-v2-executor.ts",
+      "sha256": "ffd82960b9f09c4ca9d4a00f3673668a99fc4f8c0f9a93da26c1fb52b9eafb1d"
+    },
+    {
+      "path": "src/evaluation/qwen-answerability-judge-v5.ts",
+      "sha256": "46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"
+    },
+    {
+      "path": "src/retrieval/multilingual-e5-small.ts",
+      "sha256": "c8d9a8f62dbfc5e3f66a545d3cfd6cc57a8f6a73f9f52741dd79159b6495a53e"
+    },
+    {
+      "path": "tests/work-order-end-to-end-regression-v3.integration.test.ts",
+      "sha256": "88fd17a6cf637dca2fd49f42288df38e8e59f20ff4b148543dbf7b23d84deade"
+    }
+  ]
+}

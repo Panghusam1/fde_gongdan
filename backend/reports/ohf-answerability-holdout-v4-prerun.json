@@ -1,0 +1,42 @@
+{
+  "record_version": 1,
+  "status": "frozen_before_first_model_run",
+  "dataset_role": "project_authored_unseen_holdout_not_production_data",
+  "domain_review_status": "not_reviewed_by_atv320_engineer",
+  "dataset": {
+    "id": "ohf-answerability-holdout-v4",
+    "sha256": "af3134e33180960cfd00603619b9567900368fd6811973013a7814476bf6cbf6"
+  },
+  "candidate_manifest": {
+    "review_status": "unreviewed",
+    "sha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5"
+  },
+  "strategy": {
+    "strategy_id": "e5-top5-qwen-answerability-v5-two-stage-multi-evidence",
+    "candidate_limit": 5,
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "embedding_model_file_sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v5-two-stage",
+    "judge_implementation_sha256": "46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7",
+    "evaluator_sha256": "ca58335488c6401f10f41d1ad8343dedd572726cff392d69f5b60ce0dcb4eb56",
+    "runner_sha256": "cba9ba0b7b54c35cef39eb3ffe11a0cc958d7d88b056eee2b21d7fd3caf0ebbc"
+  },
+  "acceptance_targets": {
+    "overall_verdict_accuracy_minimum": 0.9444444444444444,
+    "per_class_verdict_accuracy_minimum": 0.8333333333333334,
+    "overall_adjudicated_exact_accuracy_minimum": 0.9444444444444444,
+    "per_class_adjudicated_exact_accuracy_minimum": 0.8333333333333334,
+    "unsafe_direct_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "locked_facts": [
+    "18道问题从未被当前或旧判断策略运行",
+    "三类各6题",
+    "非拒答题的可接受证据集合在首跑前写入题库",
+    "六道无答案题均共享官方候选表面词但属于不同业务单元",
+    "题库与候选尚未获得ATV320领域工程师审核",
+    "首次报告无论通过或失败都只允许创建一次"
+  ]
+}

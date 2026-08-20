@@ -1,0 +1,67 @@
+{
+  "record_version": 1,
+  "created_at": "2026-08-20T12:09:15.5184770+08:00",
+  "status": "frozen_before_first_model_run",
+  "dataset_role": "project_authored_unseen_not_production_data",
+  "first_model_run_completed": false,
+  "dataset": "data/evaluation/source-identity-unseen-v3.json",
+  "trigger_failure": {
+    "report": "reports/qwen-source-identity-unseen-v2-first-run.json",
+    "exact_case_count": 10,
+    "forged_source_accept_count": 0,
+    "failed_cases": ["P502", "P511"]
+  },
+  "root_cause_evidence": {
+    "P502_reproduced": true,
+    "P511_second_run_changed_to_pass": true,
+    "conclusion": "范围类问法存在稳定语义过度逐字匹配；多候选共同判断存在选择波动"
+  },
+  "single_architecture_change": "第八版逐候选隔离运行第七版来源策略，程序按直接回答优先、部分相关其次汇总，并增加通用语义等价规则。",
+  "controlled_preflight": {
+    "tests": ["R305", "R306", "R307", "R308"],
+    "status": "passed",
+    "case_count": 12,
+    "exact_case_count": 12,
+    "forged_source_accept_count": 0,
+    "meaning": "不计入真实模型成绩"
+  },
+  "acceptance_target": {
+    "exact_case_count_minimum": 11,
+    "forged_source_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "strategy": {
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v8-candidate-isolated",
+    "main_chain_source_identity_binding": "database-source-chain-v1",
+    "candidate_evaluation": "isolated_then_program_ranked",
+    "temperature": 0
+  },
+  "production_accuracy_claim_allowed": false,
+  "repair_before_first_run_allowed": false,
+  "first_run_report": "reports/qwen-source-identity-unseen-v3-first-run.json",
+  "frozen_inputs": [
+    {"path":"data/evaluation/source-identity-unseen-v3.json","sha256":"2f4c98419aa47e3d6a0697ce74f8fd621961daeff6bf4d823a2bf21603d09fe8"},
+    {"path":"src/evaluation/source-identity-unseen-v3-dataset.ts","sha256":"7ff1a8fe7fc6a5dbd99598dd4fad609237418d34ed3a4705dc9ec74a04238365"},
+    {"path":"src/evaluation/source-identity-unseen-executor-v3.ts","sha256":"fdddf75112e7ab25f860ed2cbc25a1e7435dc185842221c9775c57018f412566"},
+    {"path":"src/evaluation/qwen-answerability-judge-v8.ts","sha256":"6f10c1b32e17ec5d55cb3cb4e99ba8eae8b30e8c67000ebdfe885200475dc3a4"},
+    {"path":"src/coordinator/work-order-main-chain-v3.ts","sha256":"d999406bababb5a5fce005275e33e865f72b13c81feead76ad7938cf04d3b20a"},
+    {"path":"src/evaluation/qwen-answerability-judge-v7.ts","sha256":"b4776aa1146fdd851443bf1de99f8e12717d5be20bf17e67c2bb10aab093dac1"},
+    {"path":"src/evaluation/qwen-answerability-judge-v6.ts","sha256":"5885eb28f020d8075dfd87adcc3e9e359eae0eb643c9c0dff0375d1167eae72a"},
+    {"path":"src/evaluation/qwen-answerability-judge-v5.ts","sha256":"46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"},
+    {"path":"src/evaluation/qwen-answerability-judge.ts","sha256":"7436262f65a50b1b6d9968c2bb85f2e348e581f06289696570e24e8ac114bd65"},
+    {"path":"src/evaluation/source-aware-work-order-judge.ts","sha256":"94ee1a94fdd3c7c47a5f81d3c5a1faf8ee4519c4aa3268b80b8c7f296d317356"},
+    {"path":"tests/qwen-answerability-judge-v8.test.ts","sha256":"bac6755fbcd59a2f0138ae39bdfa258371ac0bf8d37ea65d02efc57420898aa5"},
+    {"path":"tests/work-order-main-chain-v3.test.ts","sha256":"902206518f3e403a4a0413547b536e6eeab7dc5debfa2bd266ec9f9e4a9d2b06"},
+    {"path":"tests/source-identity-unseen-v3-dataset.test.ts","sha256":"9ac8aa83ce7a1152a408ae0cfd990cd8d7d9e13a49d35f20dc931bde5768215d"},
+    {"path":"tests/source-identity-unseen-executor-v3.test.ts","sha256":"971017e544413a1af647b11ba65874774eb905665cc10b3248992977ef2d6621"},
+    {"path":"tests/source-identity-unseen-v3-prerun.test.ts","sha256":"7cf5509f70ac4cc17c5ba9f1c7fa659ffdb28a31f4b1894cf9952de81f8f99c9"},
+    {"path":"tests/source-identity-unseen-v3-real.integration.test.ts","sha256":"630c7693d344127e88df5d3a084be4760550b2af6a51e399a1e1bcbf0637ab48"}
+  ],
+  "interpretation_limits": [
+    "第三批为项目自建未见题，不等于真实工厂数据",
+    "第八版已见第二批失败，但未见第三批问题",
+    "逐候选判断提高稳定性的同时增加模型调用次数和延迟",
+    "第一次真实运行无论成败都必须保留，不得覆盖"
+  ]
+}

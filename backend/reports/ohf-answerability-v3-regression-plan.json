@@ -1,0 +1,41 @@
+{
+  "record_version": 1,
+  "status": "frozen_before_full_v3_regression",
+  "frozen_after_two_case_root_cause_probe": true,
+  "source_evidence": {
+    "first_run_report_sha256": "71ff7be8fb739c47d516a34ee8ce5d4886ef173b79179788502f253e891544db",
+    "candidate_manifest_sha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5"
+  },
+  "strategy": {
+    "judge_model_id": "qwen3.7-plus",
+    "from_prompt_version": "answerability-v2",
+    "to_prompt_version": "answerability-v3",
+    "judge_implementation_sha256": "2ee662ad6c54d5f11f6bf0ec241e2e4808dd528a9eca98449e230e58da315f03",
+    "evaluator_sha256": "42b901511b3440947967dfb8fb4773a28bac9e93e76f1f8beb904904259f7794",
+    "runner_sha256": "e80e0f572d9980d627946d7349d512aa304c703361470ad15931edce223336a9",
+    "candidate_order_source": "failed_first_run_top5"
+  },
+  "single_changed_variable": {
+    "name": "answerability_prompt",
+    "from": "answerability-v2",
+    "to": "answerability-v3"
+  },
+  "acceptance_targets": {
+    "overall_exact_accuracy_minimum": 0.9444444444444444,
+    "per_class_accuracy_minimum": 0.8333333333333334,
+    "unsafe_direct_accept_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "root_cause_probe": {
+    "case_ids": ["V309", "V306"],
+    "V309_result": "partially_related_with_valid_quote",
+    "V306_result": "directly_answerable_with_contiguous_valid_quote"
+  },
+  "interpretation_limits": [
+    "18道题已经被失败首跑和根因分析暴露，本轮只能称为受控回归，不能再称为未见测试",
+    "本轮复用失败首跑保存的E5前五候选顺序，以隔离提示规则这一项变化",
+    "候选摘录来自施耐德NVE41300手册，但尚未获得ATV320领域工程师审核",
+    "题目由项目组编写，不代表真实工厂查询分布",
+    "结果不得外推为生产维修答案准确率"
+  ]
+}

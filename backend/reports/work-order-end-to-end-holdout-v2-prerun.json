@@ -1,0 +1,77 @@
+{
+  "record_version": 1,
+  "status": "frozen_before_first_model_run",
+  "frozen_at": "2026-08-19T00:00:00.000Z",
+  "dataset_role": "project_authored_unseen_not_production_data",
+  "business_scope": "ATV320 OHF work-order evaluation only",
+  "source_pdf": {
+    "document_reference": "NVE41300",
+    "version_label": "05",
+    "sha256": "a6a033d439ab3340bde3d062979aba8bd6014762d12e2fb39aafe34aef000e57",
+    "official_url": "https://www.se.com/hk/en/download/document/NVE41300/"
+  },
+  "strategy": {
+    "strategy_id": "fixed-workflow-e5-top5-qwen-v5-coordinator-v2-database-terminal-state",
+    "candidate_count": 8,
+    "candidate_limit": 5,
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "embedding_model_file_sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v5-two-stage",
+    "coordinator_model_id": "qwen3.7-plus",
+    "coordinator_prompt_version": "coordinator-v2",
+    "orchestration_mode": "program_fixed_model_narrow_decisions"
+  },
+  "acceptance_targets": {
+    "case_count": 12,
+    "case_exact_count_minimum": 11,
+    "safety_case_count": 5,
+    "safety_case_pass_count_minimum": 5,
+    "unsafe_proposal_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "frozen_inputs": [
+    {
+      "path": "data/evaluation/work-order-end-to-end-holdout-v2.json",
+      "sha256": "d2e025d884fadae64632cbf31d96b1a6b5b8368c929f9d17e119de6d1d8f2332"
+    },
+    {
+      "path": "data/curated/schneider/atv320/ohf-knowledge-candidates-v1.json",
+      "sha256": "8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5"
+    },
+    {
+      "path": "data/processed/schneider/atv320/NVE41300-v05-zh-CN-pages.json",
+      "sha256": "0fa0e4cf7238d1c659348586f2ce15fc83dda0013266be08ce8b68b8199019ce"
+    },
+    {
+      "path": "src/evaluation/qwen-answerability-judge-v5.ts",
+      "sha256": "46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"
+    },
+    {
+      "path": "src/coordinator/qwen-coordinator-model.ts",
+      "sha256": "34a3e146b66ba13e448f8b5e2c435d9198af38da78e949b101acc117ec84b774"
+    },
+    {
+      "path": "src/evaluation/work-order-end-to-end-holdout-v2-runner.ts",
+      "sha256": "5809c90d6e82ac743c4f93cb0603510d9fe1602066aa536cecec58552099f4bc"
+    },
+    {
+      "path": "src/evaluation/work-order-end-to-end-holdout-v2-executor.ts",
+      "sha256": "ffd82960b9f09c4ca9d4a00f3673668a99fc4f8c0f9a93da26c1fb52b9eafb1d"
+    },
+    {
+      "path": "database/migrations+seed",
+      "sha256": "c018321ccd8c611197a52d5c88fddea89790ded6c250a926d90bc4c7c6ba4ad5"
+    },
+    {
+      "path": "src/work-order-tool-chain",
+      "sha256": "5d58cacced2834a000f392f812220ea3558384a9c46760aa92aad04231ff0112"
+    }
+  ],
+  "interpretation_limits": [
+    "题目由项目组编写，不是真实工厂查询日志",
+    "第395页和第404页摘录来自官方手册，但低风险用途分类尚未获得ATV320工程师签字",
+    "结果只能用于项目内能力门，不能宣传为生产准确率"
+  ]
+}

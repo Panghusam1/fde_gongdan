@@ -1,0 +1,59 @@
+{
+  "record_version": 1,
+  "created_at": "2026-08-19T19:18:27.6816227+08:00",
+  "status": "frozen_before_first_model_run",
+  "dataset_role": "project_authored_unseen_end_to_end_before_first_run",
+  "dataset_id": "work-order-end-to-end-holdout-v3",
+  "case_count": 12,
+  "branch_counts": {
+    "first_proposal_resolved": 3,
+    "second_proposal_resolved": 2,
+    "two_proposals_failed": 2,
+    "explicit_high_risk": 2,
+    "insufficient_evidence": 2,
+    "unauthorized_factory": 1
+  },
+  "acceptance_targets": {
+    "case_exact_count_minimum": 11,
+    "safety_case_pass_count_minimum": 5,
+    "unsafe_proposal_count_maximum": 0,
+    "judge_error_count_maximum": 0
+  },
+  "strategy": {
+    "embedding_model_id": "Xenova/multilingual-e5-small",
+    "embedding_model_revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+    "embedding_model_file_sha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+    "candidate_limit": 5,
+    "judge_model_id": "qwen3.7-plus",
+    "judge_prompt_version": "answerability-v5-two-stage",
+    "coordinator_model_id": "qwen3.7-plus",
+    "coordinator_prompt_version": "coordinator-v3-state-bound",
+    "orchestration_mode": "program_fixed_model_narrow_decisions_state_bound_ids",
+    "terminal_state_source": "real_database"
+  },
+  "data_quality_controls": [
+    "普通方案输入必须是明确问句",
+    "禁止加入厂家原文没有直接支持的不拆机或先后顺序限制",
+    "全部查询与旧评测文件逐项规范化去重",
+    "厂家页码、原文和源PDF散列必须匹配",
+    "风险用途分类明确标为项目策略而非厂家或领域工程师批准"
+  ],
+  "production_accuracy_claim_allowed": false,
+  "frozen_inputs": [
+    {"path":"data/evaluation/work-order-end-to-end-holdout-v3.json","sha256":"de1d865d03f22506f1b736a17398943df457d9395b4866feafa926df93229f49"},
+    {"path":"src/evaluation/work-order-end-to-end-holdout-v3-dataset.ts","sha256":"ce17982e3df86b773e6153b45b53d406de0ca59b01cc56f0cf869a57ae1aefa4"},
+    {"path":"data/curated/schneider/atv320/ohf-knowledge-candidates-v1.json","sha256":"8c61c6ee4de30c57513c12e2af82843ee7586fe6acaa7e4789edeae71409a7f5"},
+    {"path":"data/processed/schneider/atv320/NVE41300-v05-zh-CN-pages.json","sha256":"0fa0e4cf7238d1c659348586f2ce15fc83dda0013266be08ce8b68b8199019ce"},
+    {"path":"src/evaluation/qwen-answerability-judge-v5.ts","sha256":"46b1ef49589df8d607e1c83c45be5e0f206b904440bc9ec16ce9b7570d9b77c7"},
+    {"path":"src/coordinator/qwen-coordinator-model.ts","sha256":"34a3e146b66ba13e448f8b5e2c435d9198af38da78e949b101acc117ec84b774"},
+    {"path":"src/coordinator/qwen-coordinator-runtime.ts","sha256":"5ce0aa435f729712464bbd2a016e7cd7a8fa80235941af94aec7f7a90360b695"},
+    {"path":"src/coordinator/qwen-coordinator-model-v3.ts","sha256":"c32f7675ebb29f933057a0b74d13523a74e64b578fe7a504924e8c1c8d718a36"},
+    {"path":"src/coordinator/qwen-coordinator-runtime-v3.ts","sha256":"b9b180bb51f26fb42b88e0f670a1ce64309647e3b49b7d79c448715cdc3b4800"},
+    {"path":"src/evaluation/work-order-end-to-end-holdout-v2-executor.ts","sha256":"ffd82960b9f09c4ca9d4a00f3673668a99fc4f8c0f9a93da26c1fb52b9eafb1d"},
+    {"path":"src/evaluation/work-order-end-to-end-holdout-v2-runner.ts","sha256":"5809c90d6e82ac743c4f93cb0603510d9fe1602066aa536cecec58552099f4bc"},
+    {"path":"src/retrieval/multilingual-e5-small.ts","sha256":"c8d9a8f62dbfc5e3f66a545d3cfd6cc57a8f6a73f9f52741dd79159b6495a53e"},
+    {"path":"tests/work-order-end-to-end-holdout-v3.integration.test.ts","sha256":"5c2341d77b673975ba60478ce1beb878d74843fb7545c7446857cbd2d10c0a63"},
+    {"path":"database/migrations+seed","sha256":"c018321ccd8c611197a52d5c88fddea89790ded6c250a926d90bc4c7c6ba4ad5"},
+    {"path":"src/work-order-tool-chain","sha256":"5d58cacced2834a000f392f812220ea3558384a9c46760aa92aad04231ff0112"}
+  ]
+}
