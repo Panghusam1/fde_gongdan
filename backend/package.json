@@ -1,0 +1,23 @@
+{
+  "name": "atv320-workorder-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.ts",
+    "evaluate:retrieval": "node tools/evaluate-ohf-retrieval.ts",
+    "evaluate:answerability": "node tools/evaluate-ohf-answerability.ts",
+    "demo": "node tools/run-project-demo.ts",
+    "serve:demo": "node tools/start-project-demo-service.ts",
+    "report:model-tests": "node tools/report-model-test-registry.ts",
+    "extract:pages": "python tools/extract_pdf_pages.py --input data/raw/official/schneider/atv320/ATV320_Programming_manual_CN_NVE41300_05.pdf --output data/processed/schneider/atv320/NVE41300-v05-zh-CN-pages.json --expected-source-sha256 a6a033d439ab3340bde3d062979aba8bd6014762d12e2fb39aafe34aef000e57"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "@electric-sql/pglite": "0.5.4",
+    "@electric-sql/pglite-pgvector": "0.0.5",
+    "@huggingface/transformers": "4.2.0"
+  }
+}

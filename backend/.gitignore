@@ -1,0 +1,8 @@
+node_modules/
+.pglite/
+coverage/
+tmp/
+data/raw/
+!data/raw/.gitkeep
+.env*
+!.env*.example

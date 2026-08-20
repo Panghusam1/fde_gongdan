@@ -1,0 +1,17 @@
+backend/node_modules/
+backend/.pglite/
+backend/coverage/
+backend/tmp/
+backend/data/raw/*
+!backend/data/raw/.gitkeep
+backend/.env*
+!backend/.env*.example
+
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/dist/
+frontend/coverage/
+frontend/*.tsbuildinfo
+frontend/.env*
+!frontend/.env.example
